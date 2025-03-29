@@ -1,10 +1,28 @@
   [
     {
+      "Picture": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
+      "Text": "Portfolio",
+      "TextColor": "black",
+      "TitleFont": "Verdana",
+      "Explanation": "Et projekt, lavet til praktikplads- og jobsøgning. Projektet er kun lavet med en udgangsstruktur, som kan udvides, fordi formålet kun var at undersøge bygge- og strukturmuligheder i app og api. App (ProfilApp) er lavet i Angular, som benytter sig af Restful Api med login, autentifikation med JWT-token, kryptering med bcrypt, controller, dto, automapper og repository.",
+      "Place": "https://github.com/Kima4Tec/ProfilTest",
+      "Date": "Marts 2025"
+    },
+    {
+      "Picture": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
+      "Text": "JobReporting",
+      "TextColor": "black",
+      "TitleFont": "Verdana",
+      "Explanation": "Et lille projekt, som er lavet til dokumentation for praktikpladssøgning. Man undersøger div. data om virksomheden, skriver dem i dertil hørende felter, og kan så få udskrevet data i et Words-dokument. Appen er lavet i Angular med tilhørende Api, der forbinder til databasen.",
+      "Place": "https://github.com/Kima4Tec/JobReportingApp",
+      "Date": "Marts 2025"
+    },
+    {
       "Picture": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blazor/blazor-original.svg",
       "Text": "TecModus",
       "TextColor": "black",
       "TitleFont": "Verdana",
-      "Explanation": "Et større projekt i Blazor med autentifikation og forskellige rolletildeling, hvor lærlinge kan dokumentere de opgaver, som de er igang med, udfra admins projekttildeling. Man kan tidsregistrere og se forløbsoversigt. Admin kan tildele nye roller, fx superbruger, se diverse oversigter og give nye passwords",
+      "Explanation": "Et større projekt i Blazor med autentifikation og forskellige rolletildeling, hvor lærlinge kan dokumentere de opgaver, som de er igang med, udfra admins projekttildeling. Man kan tidsregistrere og se forløbsoversigt. Admin kan tildele nye roller, fx superbruger, se diverse oversigter og give nye passwords. Programmet kan tilgås både fra skærm på væg og på lærlinges PC. Siden kører på en lokal virtuel Windows server på ISS. Målet er at, det skal integreres i en info-tavle. Dette projekt er under udarbejdelse.",
       "Place": "Lokalt hos Tec",
       "Date": "Januar-februar 2025"
     },
