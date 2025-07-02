@@ -1,0 +1,1 @@
+import{Ea as o,Fa as i,Ia as s,sa as n}from"./chunk-6OGIQL7Z.js";var a=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-hobby"]],decls:2,vars:0,consts:[[1,"flex","justify-center","items-center","text","h-2/3","text-9xl"]],template:function(e,p){e&1&&(o(0,"p",0),s(1,"Under udvikling"),i())},encapsulation:2})};export{a as Hobby};
