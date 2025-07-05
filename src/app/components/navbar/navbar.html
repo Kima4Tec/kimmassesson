@@ -1,0 +1,81 @@
+<nav class="fixed top-0 left-0 w-full bg-black  shadow-gray-800 shadow-xs h-14 text-gray-50 px-4 py-3.5 sm:py-1.5 z-50">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <!-- Hamburger -->
+            <!-- Tailwind hamburger, kun til md+ (PC) -->
+            <button class="flex-col justify-between w-6 h-4 focus:outline-none hidden md:flex" (click)="toggleMenu()">
+                <span class="block h-0.5 bg-red-500 transition-transform duration-300" [ngClass]="{
+      'rotate-45 translate-y-1.5 bg-blue-600': menuOpen,
+    'bg-red-500': !menuOpen
+    }"></span>
+                <span class="block h-0.5 bg-yellow-400 transition-opacity duration-300" [ngClass]="{
+      'opacity-0': menuOpen
+    }"></span>
+                <span class="block h-0.5 bg-blue-600 transition-transform duration-300" [ngClass]="{
+      '-rotate-45 -translate-y-2': menuOpen
+    }"></span>
+            </button>
+
+            <!-- Unicode hamburger, kun til mobil -->
+            <button class="text-2xl text-white block md:hidden" (click)="toggleMenu()">
+                {{ menuOpen ? '✖' : '☰' }}
+            </button>
+
+
+            <span class="font-bold text-xl hover:text-blue-400 cursor-pointer" routerLink="/">Kim Massesson</span>
+
+        </div>
+        <div class="social-icons flex justify-end gap-3 sm:px-8 sm:py-3">
+            <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
+                <i class="fab fa-linkedin-in text-blue-400 text-lg"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- undermenu placeres absolute under navbar -->
+    <div class="absolute top-full left-0 w-full  bg-gray-600 flex flex-col items-center space-y-4 text-xl transition-all duration-300 overflow-hidden"
+        [ngClass]="{
+      'opacity-97 pointer-events-auto py-4': menuOpen,
+      'max-h-0 opacity-0 pointer-events-none': !menuOpen
+    }">
+        <div class="flex justify-start w-full px-14">
+            <div class="sm:grid-cols-4 grid w-xl gap-8">
+                <div class="flex flex-col">
+                    <div class="text-blue-400 text-sm">HJEMMESIDER</div>
+                    <a href="https://atopos.dk/" class="text-xs mt-1 hover:opacity-90">Atopos</a>
+                    <a href="https://gnist.show/" class="text-xs mt-1 hover:opacity-90">Gnist</a>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="text-blue-400 text-sm">SKILLS</div>
+                    <span routerLink="/backend" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Backend</span>
+                    <span routerLink="/frontend" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Frontend</span>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="text-blue-400 text-sm">VIDEOER</div>
+
+                </div>
+                <div class="flex flex-col">
+                    <div class="text-blue-400 text-sm">NOTER</div>
+                    <span routerLink="/apinoter" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Api-noter</span>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="text-blue-400 text-sm">OM MIG</div>
+                    <span routerLink="/jobs" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Joberfaring</span>
+                    <span routerLink="/education" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Uddannelser</span>
+                    <span routerLink="/hobby" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Hobbyer</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
