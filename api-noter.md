@@ -26,18 +26,19 @@
 22. [FromBody](#frombody)
 23. [ICollection](#icollection)
 24. [IEnumerable<T>](#ienumerable)
-25. [Iterative Agile](#iterative-agile)
-26. [JWT](#jwt)
-27. [Klasser](#klasser)
-28. [Lagene og deres ansvar](#lagstruktur)
-29. [Models](#models)
-30. [Objekt](#objekt)
-31. [OOP](#oop-objektorienteret-programmering)
-32. [Repository og interface](#repository-og-interface)
-33. [Scalar](#scalar)
-34. [Separation of Concerns](#separation-of-concerns)
-35. [Services](#services)
-36. [.NET Apps](#net-apps)
+25. [Interfaces](#interfaces)
+26. [Iterative Agile](#iterative-agile)
+27. [JWT](#jwt)
+28. [Klasser](#klasser)
+29. [Lagene og deres ansvar](#lagstruktur)
+30. [Models](#models)
+31. [Objekt](#objekt)
+32. [OOP](#oop-objektorienteret-programmering)
+33. [Repository og interface](#repository-og-interface)
+34. [Scalar](#scalar)
+35. [Separation of Concerns](#separation-of-concerns)
+36. [Services](#services)
+37. [.NET Apps](#net-apps)
 
 ---
 
@@ -2821,6 +2822,141 @@ DDD handler om at bygge software omkring det **forretningsdomæne**, systemet mo
     /Services
     /Commands
     /Queries
+```
+
+---
+
+[Home](#indholdsfortegnelse)
+
+# Interfaces
+
+Interfaces giver dig flere fordele i moderne programmering, især i C# og TypeScript.
+
+---
+
+## 1. Enighed og kontrakt i teamet
+
+Et interface fungerer som en **kontrakt**:
+
+- Alle klasser, der implementerer interfacet, _skal_ følge de samme metode-signaturer.
+- Det gør det nemt for et team at være enige om, hvordan ting skal kaldes, fx `Save()`, `Update()`, `Delete()`.
+- Det forhindrer, at nogen “finder på” en metode med et anderledes navn (fx `Gem()` i stedet for `Save()`) og bryder standarden.
+
+**Resultat:** ensartet kode og lettere samarbejde.
+
+---
+
+## 2. Forebygger stave- og navnekonflikter
+
+Når et interface definerer en metode, skal alle implementeringer bruge **præcis** den samme signatur.\
+Det reducerer risikoen for stavefejl eller uens navngivning.
+
+Eksempel:
+
+```csharp
+public interface IAuthorRepository
+{
+    Task<List<Author>> GetAllAsync();
+}
+```
+
+Alle implementeringer **skal** følge denne kontrakt, hvilket giver ensartethed.
+
+---
+
+## 3. Laver koden mere fleksibel og testbar (afkobling)
+
+Ved at programmere mod et interface i stedet for en konkret klasse, kan du nemt:
+
+- udskifte implementationer (fx skifte database)
+- benytte mocking frameworks i tests
+- bruge Dependency Injection
+- opfylde SOLID-princippet (især **D** = Dependency Inversion)
+
+Eksempel:
+
+```csharp
+public class AuthorsController
+{
+    private readonly IAuthorRepository _repo;
+
+    public AuthorsController(IAuthorRepository repo)
+    {
+        _repo = repo;
+    }
+}
+```
+
+I en test kan du så:
+
+```csharp
+var fakeRepo = Substitute.For<IAuthorRepository>();
+```
+
+… og dermed teste uden rigtig database.
+
+---
+
+## 4. Konsistens og “sikkerhed”
+
+Interfaces giver en form for **kompileret sikkerhed**.\
+Når en klasse lover at implementere et interface, kan du stole på, at alle metoder er til stede, og at ingen mangler.\
+Det beskytter din kode mod fejl og sikrer konsistens.
+
+---
+
+## Kort opsummeret
+
+| **Fordel**                           | **Hvad betyder det?**                                   |
+| ------------------------------------ | ------------------------------------------------------- |
+| Enighed og fælles kontrakt           | Teamet holder samme navngivning og metode-signaturer    |
+| Forhindrer stave- og navnekonflikter | Interfaces tvinger standardmetoder                      |
+| Lettere at teste og udskifte         | Afkobler konkret kode, fx med mocks eller DI            |
+| Konsistens og “sikkerhed”            | Sikrer alle implementeringer overholder aftalte metoder |
+
+---
+
+## Eksempel i C\#
+
+**Interface:**
+
+```csharp
+public interface IAuthorRepository
+{
+    Task<List<Author>> GetAllAsync();
+    Task<Author?> GetByIdAsync(int id);
+    Task AddAsync(Author author);
+}
+```
+
+**Implementation:**
+
+```csharp
+public class AuthorRepository : IAuthorRepository
+{
+    private readonly MyDbContext _context;
+
+    public AuthorRepository(MyDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<List<Author>> GetAllAsync()
+    {
+        return await _context.Authors.ToListAsync();
+    }
+
+    public async Task<Author?> GetByIdAsync(int id)
+    {
+        return await _context.Authors.FindAsync(id);
+    }
+
+    public async Task AddAsync(Author author)
+    {
+        _context.Authors.Add(author);
+        await _context.SaveChangesAsync();
+    }
+}
 ```
 
 ---
