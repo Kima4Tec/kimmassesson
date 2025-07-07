@@ -39,6 +39,7 @@
 35. [Separation of Concerns](#separation-of-concerns)
 36. [Services](#services)
 37. [.NET Apps](#net-apps)
+38. [xUnit tests](#xunit-tests)
 
 ---
 
@@ -2958,6 +2959,334 @@ public class AuthorRepository : IAuthorRepository
     }
 }
 ```
+
+---
+
+[Home](#indholdsfortegnelse)
+
+# xUnit tests
+
+### Substitute, InMemory og Moq
+
+---
+
+## xUnit
+
+- Et af de mest populære test frameworks til .NET.
+- Giver `[Fact]` og `[Theory]` attributter til at definere tests.
+- Kan køres via Visual Studio Test Explorer, dotnet CLI eller CI/CD pipelines.
+
+Eksempel:
+
+```csharp
+[Fact]
+public void AddTwoNumbers_ReturnsSum()
+{
+    var result = 2 + 2;
+    Assert.Equal(4, result);
+}
+```
+
+---
+
+## NSubstitute
+
+- Mocking framework.
+- Velegnet til at erstatte interfaces med "falske" objekter.
+- Bruges ofte sammen med xUnit for at undgå afhængighed af databaser eller eksterne systemer.
+
+Eksempel:
+
+```csharp
+var repo = Substitute.For<IAuthorRepository>();
+repo.GetAllAsync().Returns(new List<Author>
+{
+    new Author { Id = 1, FirstName = "John", LastName = "Doe" }
+});
+
+var controller = new AuthorsController(repo);
+var result = await controller.GetThemAllAsync();
+```
+
+Fordele:
+
+- Hurtige tests.
+- Ingen rigtig database.
+- Giver kontrol over, hvad repo skal returnere.
+
+---
+
+## InMemory database (Entity Framework)
+
+- Bruges til at teste EF Core uden en "rigtig" database.
+- Simulerer en database i RAM.
+
+Eksempel:
+
+```csharp
+var options = new DbContextOptionsBuilder<MyDbContext>()
+    .UseInMemoryDatabase(databaseName: "TestDb")
+    .Options;
+
+using var context = new MyDbContext(options);
+context.Authors.Add(new Author { Id = 1, FirstName = "Jane", LastName = "Smith" });
+context.SaveChanges();
+
+var repo = new AuthorRepository(context);
+var authors = await repo.GetAllAsync();
+```
+
+Fordele:
+
+- Test af EF Core queries.
+- Minder mere om rigtig databaseadfærd end mocks.
+
+Ulemper:
+
+- Kan opføre sig lidt anderledes end fx SQL Server pga. manglende constraints og features.
+
+---
+
+## Moq
+
+- Populært mocking-framework ligesom NSubstitute.
+- Bruges til at oprette "fakes" og definere forventninger.
+
+Eksempel:
+
+```csharp
+var mockRepo = new Mock<IAuthorRepository>();
+mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(new List<Author>
+{
+    new Author { Id = 1, FirstName = "Moq", LastName = "Example" }
+});
+
+var controller = new AuthorsController(mockRepo.Object);
+var result = await controller.GetThemAllAsync();
+```
+
+Fordele:
+
+- Mange muligheder for verificering (fx `.Verify()`).
+- Bredt anvendt i enterprise.
+
+---
+
+# Sammenligning
+
+|     |     |
+| --- | --- |
+
+|        | **NSubstitute**       | **InMemory**                | **Moq**                |
+| ------ | --------------------- | --------------------------- | ---------------------- |
+| Type   | Mocking               | In-memory database          | Mocking                |
+| Fordel | Hurtig, enkel syntax  | Simulerer "rigtig" database | Mange verify-features  |
+| Ulempe | Ingen real EF queries | Ikke 100% som rigtig DB     | Kan være mere "verbal" |
+
+---
+
+# Hvornår bruge hvad?
+
+✅ **NSubstitute / Moq**: når du kun vil teste logikken uden database.\
+✅ **InMemory**: når du vil teste EF queries, men stadig hurtigt.\
+✅ **Integrationstest**: brug rigtig database + migrations + seed data.
+
+---
+
+### Eksempel: Testklasse med xUnit og NSubstitute
+
+Lad os antage, at vi har en enkel EF `DbContext` og en service, der udfører en query. Vi vil teste en metode, der henter brugere fra en `DbSet<User>` baseret på et kriterium (f.eks. alder).
+
+#### Forudsætninger
+
+- **xUnit**: Testrammeværk.
+- **NSubstitute**: Mocking-framework til at erstatte `DbContext` og `DbSet`.
+- **Entity Framework Core**: For at simulere en in-memory `DbSet`.
+
+#### Kodeeksempel
+
+Her er en refaktoreret og velstruktureret testklasse:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using NSubstitute;
+using Xunit;
+
+// Model
+public class User
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+// DbContext
+public class MyDbContext : DbContext
+{
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
+    public DbSet<User> Users { get; set; }
+}
+
+// Service til at teste
+public class UserService
+{
+    private readonly MyDbContext _context;
+
+    public UserService(MyDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<List<User>> GetUsersOlderThanAsync(int age)
+    {
+        return await _context.Users
+            .Where(u => u.Age > age)
+            .ToListAsync();
+    }
+}
+
+// Testklasse
+public class UserServiceTests
+{
+    private readonly UserService _userService;
+    private readonly MyDbContext _context;
+    private readonly IQueryable<User> _users;
+
+    public UserServiceTests()
+    {
+        // Opret testdata
+        var users = new List<User>
+        {
+            new User { Id = 1, Name = "Alice", Age = 25 },
+            new User { Id = 2, Name = "Bob", Age = 30 },
+            new User { Id = 3, Name = "Charlie", Age = 20 }
+        }.AsQueryable();
+
+        // Mock DbSet
+        var dbSet = Substitute.For<DbSet<User>, IQueryable<User>, IAsyncEnumerable<User>>();
+        ((IQueryable<User>)dbSet).Provider.Returns(new TestAsyncQueryProvider<User>(users.Provider));
+        ((IQueryable<User>)dbSet).Expression.Returns(users.Expression);
+        ((IQueryable<User>)dbSet).ElementType.Returns(users.ElementType);
+        ((IQueryable<User>)dbSet).GetEnumerator().Returns(users.GetEnumerator());
+        ((IAsyncEnumerable<User>)dbSet).GetAsyncEnumerator(default).Returns(new TestAsyncEnumerator<User>(users.GetEnumerator()));
+
+        // Mock DbContext
+        _context = Substitute.For<MyDbContext>();
+        _context.Users.Returns(dbSet);
+
+        // Initialiser service
+        _userService = new UserService(_context);
+    }
+
+    [Fact]
+    public async Task GetUsersOlderThanAsync_ReturnsUsersOlderThanGivenAge()
+    {
+        // Arrange
+        int ageThreshold = 25;
+
+        // Act
+        var result = await _userService.GetUsersOlderThanAsync(ageThreshold);
+
+        // Assert
+        Assert.Equal(1, result.Count); // Kun Bob (Age = 30) er over 25
+        Assert.Contains(result, u => u.Name == "Bob" && u.Age == 30);
+    }
+
+    [Fact]
+    public async Task GetUsersOlderThanAsync_WhenNoUsersMatch_ReturnsEmptyList()
+    {
+        // Arrange
+        int ageThreshold = 40;
+
+        // Act
+        var result = await _userService.GetUsersOlderThanAsync(ageThreshold);
+
+        // Assert
+        Assert.Empty(result);
+    }
+}
+
+// Hjælpeklasser til async support
+public class TestAsyncQueryProvider<TEntity> : IAsyncQueryProvider
+{
+    private readonly IQueryProvider _inner;
+
+    public TestAsyncQueryProvider(IQueryProvider inner)
+    {
+        _inner = inner;
+    }
+
+    public IQueryable CreateQuery(Expression expression) => new TestAsyncEnumerable<TEntity>(expression);
+    public IQueryable<TElement> CreateQuery<TElement>(Expression expression) => new TestAsyncEnumerable<TElement>(expression);
+    public object Execute(Expression expression) => _inner.Execute(expression);
+    public TResult Execute<TResult>(Expression expression) => _inner.Execute<TResult>(expression);
+    public TResult ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken = default)
+    {
+        var result = Execute(expression);
+        return Task.FromResult((TResult)result).GetAwaiter().GetResult();
+    }
+}
+
+public class TestAsyncEnumerable<T> : EnumerableQuery<T>, IAsyncEnumerable<T>, IQueryable<T>
+{
+    public TestAsyncEnumerable(IEnumerable<T> enumerable) : base(enumerable) { }
+    public TestAsyncEnumerable(Expression expression) : base(expression) { }
+    public IAsyncEnumerator<T> GetAsyncEnumerator(CancellationToken cancellationToken = default) => new TestAsyncEnumerator<T>(this.AsEnumerable().GetEnumerator());
+}
+
+public class TestAsyncEnumerator<T> : IAsyncEnumerator<T>
+{
+    private readonly IEnumerator<T> _inner;
+
+    public TestAsyncEnumerator(IEnumerator<T> inner)
+    {
+        _inner = inner;
+    }
+
+    public T Current => _inner.Current;
+    public ValueTask<bool> MoveNextAsync() => new ValueTask<bool>(_inner.MoveNext());
+    public ValueTask DisposeAsync() { _inner.Dispose(); return default; }
+}
+```
+
+### Forklaring af koden
+
+**1. Struktur**:
+
+- Koden er opdelt i små, fokuserede dele: model (`User`), `DbContext`, service (`UserService`), og testklasse (`UserServiceTests`).
+- Testklassen bruger xUnit og NSubstitute til at mocke `DbContext` og `DbSet`.
+
+**2. NSubstitute**:
+
+- Vi simulerer en `DbSet<User>` ved at implementere både `IQueryable<User>` og `IAsyncEnumerable<User>` for at understøtte LINQ og async queries.
+- `TestAsyncQueryProvider` og `TestAsyncEnumerable` hjælper med async-understøttelse, så vi kan teste EF's `ToListAsync`.
+
+**3. Testsetup**:
+
+- I konstruktøren sættes testdata op (en liste af `User`-objekter) og mockes ind i `DbSet`.
+- `MyDbContext` mockes, så `Users`-egenskaben returnerer det mocked `DbSet`.
+
+**4. Tests**:
+
+- To testmetoder verificerer `GetUsersOlderThanAsync`:
+  - Den første tester, at kun brugere over en given alder returneres.
+  - Den anden tester, at en tom liste returneres, hvis ingen brugere matcher.
+
+**5. Refaktoreringsegenskaber**:
+
+- **Læsbarhed**: Klare navne og opdeling i små klasser.
+- **Genbrug**: Hjælpeklasserne (`TestAsyncQueryProvider` osv.) kan genbruges til andre tests.
+- **Isolering**: Ingen afhængighed af en rigtig database, så testene kører hurtigt.
+- **Vedligeholdelse**: Nem at udvide med flere testcases.
+
+**6. Hvis du vil udvide**:
+
+- **Flere testcases**: Tilføj flere [Fact]-metoder for at teste andre scenarier (f.eks. specifikke navne eller ID'er).
+- **Forskellige queries**: Ændr GetUsersOlderThan til at teste andre LINQ-udtryk (f.eks. Where(u => u.Name.StartsWith("A"))).
 
 ---
 
