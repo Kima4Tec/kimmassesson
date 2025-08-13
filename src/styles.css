@@ -16,7 +16,7 @@ body {
 }
 
 .prose {
-    @apply max-w-prose text-gray-800;
+    @apply max-w-[90ch] text-gray-800;
 }
 
 .prose h1 {

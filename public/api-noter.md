@@ -26,18 +26,20 @@
 22. [FromBody](#frombody)
 23. [ICollection](#icollection)
 24. [IEnumerable<T>](#ienumerable)
-25. [Iterative Agile](#iterative-agile)
-26. [JWT](#jwt)
-27. [Klasser](#klasser)
-28. [Lagene og deres ansvar](#lagstruktur)
-29. [Models](#models)
-30. [Objekt](#objekt)
-31. [OOP](#oop-objektorienteret-programmering)
-32. [Repository og interface](#repository-og-interface)
-33. [Scalar](#scalar)
-34. [Separation of Concerns](#separation-of-concerns)
-35. [Services](#services)
-36. [.NET Apps](#net-apps)
+25. [Interfaces](#interfaces)
+26. [Iterative Agile](#iterative-agile)
+27. [JWT](#jwt)
+28. [Klasser](#klasser)
+29. [Lagene og deres ansvar](#lagstruktur)
+30. [Models](#models)
+31. [Objekt](#objekt)
+32. [OOP](#oop-objektorienteret-programmering)
+33. [Repository og interface](#repository-og-interface)
+34. [Scalar](#scalar)
+35. [Separation of Concerns](#separation-of-concerns)
+36. [Services](#services)
+37. [.NET Apps](#net-apps)
+38. [xUnit tests](#xunit-tests)
 
 ---
 
@@ -2822,6 +2824,469 @@ DDD handler om at bygge software omkring det **forretningsdomæne**, systemet mo
     /Commands
     /Queries
 ```
+
+---
+
+[Home](#indholdsfortegnelse)
+
+# Interfaces
+
+Interfaces giver dig flere fordele i moderne programmering, især i C# og TypeScript.
+
+---
+
+## 1. Enighed og kontrakt i teamet
+
+Et interface fungerer som en **kontrakt**:
+
+- Alle klasser, der implementerer interfacet, _skal_ følge de samme metode-signaturer.
+- Det gør det nemt for et team at være enige om, hvordan ting skal kaldes, fx `Save()`, `Update()`, `Delete()`.
+- Det forhindrer, at nogen “finder på” en metode med et anderledes navn (fx `Gem()` i stedet for `Save()`) og bryder standarden.
+
+**Resultat:** ensartet kode og lettere samarbejde.
+
+---
+
+## 2. Forebygger stave- og navnekonflikter
+
+Når et interface definerer en metode, skal alle implementeringer bruge **præcis** den samme signatur.\
+Det reducerer risikoen for stavefejl eller uens navngivning.
+
+Eksempel:
+
+```csharp
+public interface IAuthorRepository
+{
+    Task<List<Author>> GetAllAsync();
+}
+```
+
+Alle implementeringer **skal** følge denne kontrakt, hvilket giver ensartethed.
+
+---
+
+## 3. Laver koden mere fleksibel og testbar (afkobling)
+
+Ved at programmere mod et interface i stedet for en konkret klasse, kan du nemt:
+
+- udskifte implementationer (fx skifte database)
+- benytte mocking frameworks i tests
+- bruge Dependency Injection
+- opfylde SOLID-princippet (især **D** = Dependency Inversion)
+
+Eksempel:
+
+```csharp
+public class AuthorsController
+{
+    private readonly IAuthorRepository _repo;
+
+    public AuthorsController(IAuthorRepository repo)
+    {
+        _repo = repo;
+    }
+}
+```
+
+I en test kan du så:
+
+```csharp
+var fakeRepo = Substitute.For<IAuthorRepository>();
+```
+
+… og dermed teste uden rigtig database.
+
+---
+
+## 4. Konsistens og “sikkerhed”
+
+Interfaces giver en form for **kompileret sikkerhed**.\
+Når en klasse lover at implementere et interface, kan du stole på, at alle metoder er til stede, og at ingen mangler.\
+Det beskytter din kode mod fejl og sikrer konsistens.
+
+---
+
+## Kort opsummeret
+
+| **Fordel**                           | **Hvad betyder det?**                                   |
+| ------------------------------------ | ------------------------------------------------------- |
+| Enighed og fælles kontrakt           | Teamet holder samme navngivning og metode-signaturer    |
+| Forhindrer stave- og navnekonflikter | Interfaces tvinger standardmetoder                      |
+| Lettere at teste og udskifte         | Afkobler konkret kode, fx med mocks eller DI            |
+| Konsistens og “sikkerhed”            | Sikrer alle implementeringer overholder aftalte metoder |
+
+---
+
+## Eksempel i C\#
+
+**Interface:**
+
+```csharp
+public interface IAuthorRepository
+{
+    Task<List<Author>> GetAllAsync();
+    Task<Author?> GetByIdAsync(int id);
+    Task AddAsync(Author author);
+}
+```
+
+**Implementation:**
+
+```csharp
+public class AuthorRepository : IAuthorRepository
+{
+    private readonly MyDbContext _context;
+
+    public AuthorRepository(MyDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<List<Author>> GetAllAsync()
+    {
+        return await _context.Authors.ToListAsync();
+    }
+
+    public async Task<Author?> GetByIdAsync(int id)
+    {
+        return await _context.Authors.FindAsync(id);
+    }
+
+    public async Task AddAsync(Author author)
+    {
+        _context.Authors.Add(author);
+        await _context.SaveChangesAsync();
+    }
+}
+```
+
+---
+
+[Home](#indholdsfortegnelse)
+
+# xUnit tests
+
+### Substitute, InMemory og Moq
+
+---
+
+## xUnit
+
+- Et af de mest populære test frameworks til .NET.
+- Giver `[Fact]` og `[Theory]` attributter til at definere tests.
+- Kan køres via Visual Studio Test Explorer, dotnet CLI eller CI/CD pipelines.
+
+Eksempel:
+
+```csharp
+[Fact]
+public void AddTwoNumbers_ReturnsSum()
+{
+    var result = 2 + 2;
+    Assert.Equal(4, result);
+}
+```
+
+---
+
+## NSubstitute
+
+- Mocking framework.
+- Velegnet til at erstatte interfaces med "falske" objekter.
+- Bruges ofte sammen med xUnit for at undgå afhængighed af databaser eller eksterne systemer.
+
+Eksempel:
+
+```csharp
+var repo = Substitute.For<IAuthorRepository>();
+repo.GetAllAsync().Returns(new List<Author>
+{
+    new Author { Id = 1, FirstName = "John", LastName = "Doe" }
+});
+
+var controller = new AuthorsController(repo);
+var result = await controller.GetThemAllAsync();
+```
+
+Fordele:
+
+- Hurtige tests.
+- Ingen rigtig database.
+- Giver kontrol over, hvad repo skal returnere.
+
+---
+
+## InMemory database (Entity Framework)
+
+- Bruges til at teste EF Core uden en "rigtig" database.
+- Simulerer en database i RAM.
+
+Eksempel:
+
+```csharp
+var options = new DbContextOptionsBuilder<MyDbContext>()
+    .UseInMemoryDatabase(databaseName: "TestDb")
+    .Options;
+
+using var context = new MyDbContext(options);
+context.Authors.Add(new Author { Id = 1, FirstName = "Jane", LastName = "Smith" });
+context.SaveChanges();
+
+var repo = new AuthorRepository(context);
+var authors = await repo.GetAllAsync();
+```
+
+Fordele:
+
+- Test af EF Core queries.
+- Minder mere om rigtig databaseadfærd end mocks.
+
+Ulemper:
+
+- Kan opføre sig lidt anderledes end fx SQL Server pga. manglende constraints og features.
+
+---
+
+## Moq
+
+- Populært mocking-framework ligesom NSubstitute.
+- Bruges til at oprette "fakes" og definere forventninger.
+
+Eksempel:
+
+```csharp
+var mockRepo = new Mock<IAuthorRepository>();
+mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(new List<Author>
+{
+    new Author { Id = 1, FirstName = "Moq", LastName = "Example" }
+});
+
+var controller = new AuthorsController(mockRepo.Object);
+var result = await controller.GetThemAllAsync();
+```
+
+Fordele:
+
+- Mange muligheder for verificering (fx `.Verify()`).
+- Bredt anvendt i enterprise.
+
+---
+
+# Sammenligning
+
+|     |     |
+| --- | --- |
+
+|        | **NSubstitute**       | **InMemory**                | **Moq**                |
+| ------ | --------------------- | --------------------------- | ---------------------- |
+| Type   | Mocking               | In-memory database          | Mocking                |
+| Fordel | Hurtig, enkel syntax  | Simulerer "rigtig" database | Mange verify-features  |
+| Ulempe | Ingen real EF queries | Ikke 100% som rigtig DB     | Kan være mere "verbal" |
+
+---
+
+# Hvornår bruge hvad?
+
+✅ **NSubstitute / Moq**: når du kun vil teste logikken uden database.\
+✅ **InMemory**: når du vil teste EF queries, men stadig hurtigt.\
+✅ **Integrationstest**: brug rigtig database + migrations + seed data.
+
+---
+
+### Eksempel: Testklasse med xUnit og NSubstitute
+
+Lad os antage, at vi har en enkel EF `DbContext` og en service, der udfører en query. Vi vil teste en metode, der henter brugere fra en `DbSet<User>` baseret på et kriterium (f.eks. alder).
+
+#### Forudsætninger
+
+- **xUnit**: Testrammeværk.
+- **NSubstitute**: Mocking-framework til at erstatte `DbContext` og `DbSet`.
+- **Entity Framework Core**: For at simulere en in-memory `DbSet`.
+
+#### Kodeeksempel
+
+Her er en refaktoreret og velstruktureret testklasse:
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using NSubstitute;
+using Xunit;
+
+// Model
+public class User
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+// DbContext
+public class MyDbContext : DbContext
+{
+    public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
+    public DbSet<User> Users { get; set; }
+}
+
+// Service til at teste
+public class UserService
+{
+    private readonly MyDbContext _context;
+
+    public UserService(MyDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<List<User>> GetUsersOlderThanAsync(int age)
+    {
+        return await _context.Users
+            .Where(u => u.Age > age)
+            .ToListAsync();
+    }
+}
+
+// Testklasse
+public class UserServiceTests
+{
+    private readonly UserService _userService;
+    private readonly MyDbContext _context;
+    private readonly IQueryable<User> _users;
+
+    public UserServiceTests()
+    {
+        // Opret testdata
+        var users = new List<User>
+        {
+            new User { Id = 1, Name = "Alice", Age = 25 },
+            new User { Id = 2, Name = "Bob", Age = 30 },
+            new User { Id = 3, Name = "Charlie", Age = 20 }
+        }.AsQueryable();
+
+        // Mock DbSet
+        var dbSet = Substitute.For<DbSet<User>, IQueryable<User>, IAsyncEnumerable<User>>();
+        ((IQueryable<User>)dbSet).Provider.Returns(new TestAsyncQueryProvider<User>(users.Provider));
+        ((IQueryable<User>)dbSet).Expression.Returns(users.Expression);
+        ((IQueryable<User>)dbSet).ElementType.Returns(users.ElementType);
+        ((IQueryable<User>)dbSet).GetEnumerator().Returns(users.GetEnumerator());
+        ((IAsyncEnumerable<User>)dbSet).GetAsyncEnumerator(default).Returns(new TestAsyncEnumerator<User>(users.GetEnumerator()));
+
+        // Mock DbContext
+        _context = Substitute.For<MyDbContext>();
+        _context.Users.Returns(dbSet);
+
+        // Initialiser service
+        _userService = new UserService(_context);
+    }
+
+    [Fact]
+    public async Task GetUsersOlderThanAsync_ReturnsUsersOlderThanGivenAge()
+    {
+        // Arrange
+        int ageThreshold = 25;
+
+        // Act
+        var result = await _userService.GetUsersOlderThanAsync(ageThreshold);
+
+        // Assert
+        Assert.Equal(1, result.Count); // Kun Bob (Age = 30) er over 25
+        Assert.Contains(result, u => u.Name == "Bob" && u.Age == 30);
+    }
+
+    [Fact]
+    public async Task GetUsersOlderThanAsync_WhenNoUsersMatch_ReturnsEmptyList()
+    {
+        // Arrange
+        int ageThreshold = 40;
+
+        // Act
+        var result = await _userService.GetUsersOlderThanAsync(ageThreshold);
+
+        // Assert
+        Assert.Empty(result);
+    }
+}
+
+// Hjælpeklasser til async support
+public class TestAsyncQueryProvider<TEntity> : IAsyncQueryProvider
+{
+    private readonly IQueryProvider _inner;
+
+    public TestAsyncQueryProvider(IQueryProvider inner)
+    {
+        _inner = inner;
+    }
+
+    public IQueryable CreateQuery(Expression expression) => new TestAsyncEnumerable<TEntity>(expression);
+    public IQueryable<TElement> CreateQuery<TElement>(Expression expression) => new TestAsyncEnumerable<TElement>(expression);
+    public object Execute(Expression expression) => _inner.Execute(expression);
+    public TResult Execute<TResult>(Expression expression) => _inner.Execute<TResult>(expression);
+    public TResult ExecuteAsync<TResult>(Expression expression, CancellationToken cancellationToken = default)
+    {
+        var result = Execute(expression);
+        return Task.FromResult((TResult)result).GetAwaiter().GetResult();
+    }
+}
+
+public class TestAsyncEnumerable<T> : EnumerableQuery<T>, IAsyncEnumerable<T>, IQueryable<T>
+{
+    public TestAsyncEnumerable(IEnumerable<T> enumerable) : base(enumerable) { }
+    public TestAsyncEnumerable(Expression expression) : base(expression) { }
+    public IAsyncEnumerator<T> GetAsyncEnumerator(CancellationToken cancellationToken = default) => new TestAsyncEnumerator<T>(this.AsEnumerable().GetEnumerator());
+}
+
+public class TestAsyncEnumerator<T> : IAsyncEnumerator<T>
+{
+    private readonly IEnumerator<T> _inner;
+
+    public TestAsyncEnumerator(IEnumerator<T> inner)
+    {
+        _inner = inner;
+    }
+
+    public T Current => _inner.Current;
+    public ValueTask<bool> MoveNextAsync() => new ValueTask<bool>(_inner.MoveNext());
+    public ValueTask DisposeAsync() { _inner.Dispose(); return default; }
+}
+```
+
+### Forklaring af koden
+
+**1. Struktur**:
+
+- Koden er opdelt i små, fokuserede dele: model (`User`), `DbContext`, service (`UserService`), og testklasse (`UserServiceTests`).
+- Testklassen bruger xUnit og NSubstitute til at mocke `DbContext` og `DbSet`.
+
+**2. NSubstitute**:
+
+- Vi simulerer en `DbSet<User>` ved at implementere både `IQueryable<User>` og `IAsyncEnumerable<User>` for at understøtte LINQ og async queries.
+- `TestAsyncQueryProvider` og `TestAsyncEnumerable` hjælper med async-understøttelse, så vi kan teste EF's `ToListAsync`.
+
+**3. Testsetup**:
+
+- I konstruktøren sættes testdata op (en liste af `User`-objekter) og mockes ind i `DbSet`.
+- `MyDbContext` mockes, så `Users`-egenskaben returnerer det mocked `DbSet`.
+
+**4. Tests**:
+
+- To testmetoder verificerer `GetUsersOlderThanAsync`:
+  - Den første tester, at kun brugere over en given alder returneres.
+  - Den anden tester, at en tom liste returneres, hvis ingen brugere matcher.
+
+**5. Refaktoreringsegenskaber**:
+
+- **Læsbarhed**: Klare navne og opdeling i små klasser.
+- **Genbrug**: Hjælpeklasserne (`TestAsyncQueryProvider` osv.) kan genbruges til andre tests.
+- **Isolering**: Ingen afhængighed af en rigtig database, så testene kører hurtigt.
+- **Vedligeholdelse**: Nem at udvide med flere testcases.
+
+**6. Hvis du vil udvide**:
+
+- **Flere testcases**: Tilføj flere [Fact]-metoder for at teste andre scenarier (f.eks. specifikke navne eller ID'er).
+- **Forskellige queries**: Ændr GetUsersOlderThan til at teste andre LINQ-udtryk (f.eks. Where(u => u.Name.StartsWith("A"))).
 
 ---
 

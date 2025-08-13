@@ -1,6 +1,6 @@
-# Step-by-step: Deploy Angular projekt til GitHub Pages
+# Deploy Angular projekt til GitHub Pages
 
-Guide til at deploye dit Angular-projekt direkte til GitHub Pages.
+Guide til at deploye Angular-projekt direkte til GitHub Pages.
 
 ---
 
@@ -11,7 +11,6 @@ Guide til at deploye dit Angular-projekt direkte til GitHub Pages.
 - Angular CLI er installeret globalt (`npm install -g @angular/cli`).
 
 ---
-
 
 ## Trin 1: Installer deployment-pakken
 
@@ -54,12 +53,9 @@ https://<brugernavn>.github.io/<repo-navn>/
 
 ---
 
-
 ## Links
 
-- [angular-cli-ghpages GitHub](https://github.com/angular-schule/angular-cli-ghpages)  
-- [Angular Deployment Guide](https://angular.io/guide/deployment)  
+- [angular-cli-ghpages GitHub](https://github.com/angular-schule/angular-cli-ghpages)
+- [Angular Deployment Guide](https://angular.io/guide/deployment)
 
 ---
-
-Held og lykke med deploy!

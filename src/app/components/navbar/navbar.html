@@ -39,7 +39,7 @@
       'max-h-0 opacity-0 pointer-events-none': !menuOpen
     }">
         <div class="flex justify-start w-full px-14">
-            <div class="sm:grid-cols-4 grid w-xl gap-8">
+            <div class="sm:grid-cols-5 grid w-3xl gap-8">
                 <div class="flex flex-col">
                     <div class="text-blue-400 text-sm">HJEMMESIDER</div>
                     <a href="https://atopos.dk/" class="text-xs mt-1 hover:opacity-90">Atopos</a>
@@ -47,21 +47,29 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <div class="text-blue-400 text-sm">SKILLS</div>
-                    <span routerLink="/backend" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
-                        cursor-pointer">Backend</span>
-                    <span routerLink="/frontend" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
-                        cursor-pointer">Frontend</span>
+                    <div class="text-blue-400 text-sm">PROGRAMMERING</div>
+                    <span routerLink="/programming" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Skills</span>
+                    <span routerLink="/projects" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Projekter</span>
                 </div>
 
                 <div class="flex flex-col">
                     <div class="text-blue-400 text-sm">VIDEOER</div>
+                    <a href="https://www.youtube.com/@zoomwrap"
+                        class="text-xs mt-1 hover:opacity-90">Programmeringskanal</a>
+                    <a href="https://www.youtube.com/channel/UCup4QrPfHU0MjtLV-srhOlQ"
+                        class="text-xs mt-1 hover:opacity-90">Kreative projekter</a>
 
                 </div>
                 <div class="flex flex-col">
                     <div class="text-blue-400 text-sm">NOTER</div>
                     <span routerLink="/apinoter" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
                         cursor-pointer">Api-noter</span>
+                    <span routerLink="/ghpages" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Deploy til github pages</span>
+                    <a href="https://tailwindcss.com/docs/installation/framework-guides/angular"
+                        class="text-xs mt-1 hover:opacity-90">Tailwind med Angular</a>
                 </div>
 
                 <div class="flex flex-col">

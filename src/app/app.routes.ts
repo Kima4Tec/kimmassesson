@@ -7,14 +7,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home').then((m) => m.Home),
   },
   {
-    path: 'frontend',
+    path: 'projects',
     loadComponent: () =>
-      import('./pages/frontend/frontend').then((m) => m.Frontend),
+      import('./pages/projects/projects').then((m) => m.Projects),
   },
   {
-    path: 'backend',
+    path: 'programming',
     loadComponent: () =>
-      import('./pages/backend/backend').then((m) => m.Backend),
+      import('./pages/programming/programming').then((m) => m.Programming),
   },
   {
     path: 'hobby',
@@ -33,5 +33,12 @@ export const routes: Routes = [
     path: 'apinoter',
     loadComponent: () =>
       import('./pages/api-noter/api-noter').then((m) => m.ApiNoter),
+  },
+  {
+    path: 'ghpages',
+    loadComponent: () =>
+      import('./pages/deploy-ghpages/deploy-ghpages').then(
+        (m) => m.DeployGhpages
+      ),
   },
 ];
