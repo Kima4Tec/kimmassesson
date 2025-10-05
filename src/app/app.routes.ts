@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
-
-export const routes: Routes = [
+export const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
@@ -40,16 +39,16 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/about/about.component').then((m) => m.AboutComponent),
   },
-{
-  path: 'login',
-  loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
-},
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
+  },
   {
     path: 'edit',
     loadComponent: () =>
       import('./pages/edit/edit.component').then((m) => m.EditComponent),
   },
-  { path: '**', redirectTo: '/about' },
   {
     path: 'ghpages',
     loadComponent: () =>
