@@ -16,35 +16,34 @@ export class EditComponent {
   editing = true;
 
   constructor(private router: Router) {
-    // Tjek om admin er logget ind
+    // Redirect hvis ikke admin
     if (!localStorage.getItem('admin')) {
-      this.router.navigate(['/login']); // redirect hvis ikke logget ind
+      this.router.navigate(['/login']);
     } else {
       this.loadData();
     }
   }
 
-async loadData() {
-  const { data, error } = await supabase
-    .from('sections')         // brug sections, ikke pages
-    .select('*')
-    .eq('name', 'about')      // brug name, ikke id
-    .single();
+  async loadData() {
+    const { data, error } = await supabase
+      .from('sections')   // <-- din tabel
+      .select('*')
+      .eq('name', 'about') // <-- id/text i din tabel
+      .single();
 
-  if (error) {
-    console.error('Fejl ved hentning:', error);
-  } else {
-    this.title = data.title;
-    this.body = data.body;
+    if (error) {
+      console.error('Fejl ved hentning:', error);
+    } else {
+      this.title = data.title;
+      this.body = data.body;
+    }
   }
-}
 
-
-async save() {
-  const { error } = await supabase
-    .from('sections')
-    .update({ title: this.title, body: this.body })
-    .eq('name', 'about');
+  async save() {
+    const { error } = await supabase
+      .from('sections')
+      .update({ title: this.title, body: this.body })
+      .eq('name', 'about');
 
     if (error) {
       console.error(error);

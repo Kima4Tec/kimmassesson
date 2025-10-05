@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import supabase from '../../services/supabase.client';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -17,6 +18,7 @@ import supabase from '../../services/supabase.client';
   `
 })
 export class LoginComponent implements OnInit {
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -25,18 +27,17 @@ export class LoginComponent implements OnInit {
       if (session) this.router.navigate(['/edit']);
     });
 
-    // Lyt på auth state
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) this.router.navigate(['/edit']);
     });
   }
 
   loginWithGitHub() {
-    supabase.auth.signInWithOAuth({
-      provider: 'github',
-      options: {
-        redirectTo: 'http://localhost:4200/login' // Angular-route efter login
-      }
+supabase.auth.signInWithOAuth({
+  provider: 'github',
+  options: {
+    redirectTo: 'https://kimmassesson.dk/login'
+  }
     }).then(({ error }) => {
       if (error) console.error('Login fejl:', error);
     });

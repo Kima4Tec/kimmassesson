@@ -49,6 +49,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/edit/edit.component').then((m) => m.EditComponent),
   },
+  { path: '**', redirectTo: '/about' },
   {
     path: 'ghpages',
     loadComponent: () =>
