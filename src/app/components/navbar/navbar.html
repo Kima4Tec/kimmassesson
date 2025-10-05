@@ -39,7 +39,7 @@
       'max-h-0 opacity-0 pointer-events-none': !menuOpen
     }">
         <div class="flex justify-start w-full px-14">
-            <div class="sm:grid-cols-5 grid w-3xl gap-8">
+            <div class="sm:grid-cols-6 grid w-3xl gap-8">
                 <div class="flex flex-col">
                     <div class="text-blue-400 text-sm">HJEMMESIDER</div>
                     <a href="https://atopos.dk/" class="text-xs mt-1 hover:opacity-90">Atopos</a>
@@ -80,6 +80,13 @@
                         cursor-pointer">Uddannelser</span>
                     <span routerLink="/hobby" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
                         cursor-pointer">Hobbyer</span>
+                </div>
+                                <div class="flex flex-col">
+                    <div class="text-blue-400 text-sm">NOTER</div>
+                    <span routerLink="/about" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Noter</span>
+                    <span routerLink="/login" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Redigér</span>
                 </div>
 
             </div>

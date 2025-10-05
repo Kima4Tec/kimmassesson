@@ -35,6 +35,24 @@ export const routes: Routes = [
       import('./pages/api-noter/api-noter').then((m) => m.ApiNoter),
   },
   {
+    path: 'about',
+    loadComponent: () =>
+      import('./pages/about/about.component').then((m) => m.AboutComponent),
+  },
+{
+  path: 'login',
+  loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent)
+},
+  {
+    path: 'edit',
+    loadComponent: () =>
+      import('./pages/edit/edit.component').then((m) => m.EditComponent),
+  },
+  {
+    path: '**',
+    redirectTo: 'about',
+  },
+  {
     path: 'ghpages',
     loadComponent: () =>
       import('./pages/deploy-ghpages/deploy-ghpages').then(
