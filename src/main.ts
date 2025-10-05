@@ -4,14 +4,12 @@ import { provideMarkdown } from 'ngx-markdown';
 import { importProvidersFrom } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { App } from './app/app';
-import { ContentService } from './app/services/supabase.service';
 import { appConfig } from './app/app.config';
 
 // Kombiner alle providers
 const mergedProviders = [
   provideHttpClient(),
   importProvidersFrom(FormsModule),
-  ContentService,                 // din service
   ...(appConfig.providers ?? []), // eventuelle andre providers
 ];
 

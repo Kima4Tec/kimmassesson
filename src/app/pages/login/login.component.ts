@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { supabase } from '../../services/supabase.service';
-
+import supabase from '../../services/supabase.client';
 @Component({
   selector: 'app-login',
   standalone: true,
