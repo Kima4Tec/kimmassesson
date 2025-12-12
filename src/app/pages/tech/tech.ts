@@ -31,9 +31,6 @@ technologies: Technology[] = [
   { name: 'Git', category: 'Versionsstyring', purpose: 'Kontrol af kildekode, samarbejde, historik', keyPoints: 'Commit, branch, merge, pull, push, konfliktløsning, GitHub/GitLab integration', skill: 'Øvet'},
   { name: 'Draw.io', category: 'Dokumentation / Visualisering', purpose: 'Diagrammer og flowcharts', keyPoints: 'Flowcharts, UML, systemdiagrammer, process-diagrammer', skill: 'Øvet'},
   { name: 'Markdown', category: 'Dokumentation', purpose: 'Letvægts tekstformatering', keyPoints: 'Dokumentation, README-filer, links, billeder, lister', skill: 'Øvet' },
-
-
-
   
   // -------------------- LETØVET --------------------
   { name: 'Python', category: 'Programmeringssprog', purpose: 'Dataanalyse, backend, automation, scripting, machine learning', keyPoints: 'Let syntaks, stort økosystem, bruges til AI/ML, scripting og hurtig prototyping', skill: 'Letøvet'},
@@ -68,6 +65,6 @@ technologies: Technology[] = [
   { name: 'Electron', category: 'Desktop apps', purpose: 'Cross-platform desktop apps', keyPoints: 'Node + Chromium', skill: 'Ikke prøvet' },
   { name: 'Jest / Mocha / Chai / Cypress / Playwright', category: 'Test frameworks', purpose: 'Unit, integration, end-to-end testing', keyPoints: 'Automation, test coverage, browser & server tests', skill: 'Ikke prøvet' },
   { name: 'OAuth2 / OpenID Connect', category: 'Auth / sikkerhed', purpose: 'Single sign-on / third-party auth', keyPoints: 'Standard protokoller til autentifikation', skill: 'Ikke prøvet' },
-  { name: 'PostgreSQL / MySQL / SQLite / MongoDB / Redis', category: 'Database', purpose: 'Data storage', keyPoints: 'Relationel, NoSQL, key-value, embedded, caching', skill: 'ikke prøvet' }
+  { name: 'PostgreSQL / MySQL / SQLite / MongoDB / Redis', category: 'Database', purpose: 'Data storage', keyPoints: 'Relationel, NoSQL, key-value, embedded, caching', skill: 'ikke prøve' }
 ];
 }

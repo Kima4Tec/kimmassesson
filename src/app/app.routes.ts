@@ -59,6 +59,11 @@ export const appRoutes: Routes = [
     loadComponent: () =>
       import('./pages/tech/tech').then((m) => m.Tech),
   },
+            {
+    path: 'paintings',
+    loadComponent: () =>
+      import('./pages/paintings/paintings').then((m) => m.Paintings),
+  },
           {
     path: 'toolbar',
     loadComponent: () =>

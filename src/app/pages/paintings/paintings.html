@@ -1,0 +1,53 @@
+<main class="font-sans text-center bg-gray-100 min-h-screen p-4 mt-15">
+
+    <header class="bg-gray-900 text-white px-4 py-8 text-center">
+        <div class="text-3xl font-bold mb-2">Mine Malerier</div>
+    </header>
+
+    <!-- Galleri -->
+    <section class="flex flex-wrap justify-center gap-8 my-8">
+
+        <!-- Loop gennem alle malerier -->
+        <div 
+            *ngFor="let p of paintings" 
+            class="bg-white p-4 rounded-lg w-64 shadow-md relative">
+
+            <div class="relative">
+                <img [src]="p.image" [alt]="p.title" class="w-full rounded-md">
+
+                <!-- QR overlay -->
+                <!-- <div 
+                    class="absolute inset-0 bg-black bg-opacity-70 flex justify-center items-center 
+                           rounded-md opacity-0 hover:opacity-100 transition-opacity">
+                    <img [src]="p.qr" alt="QR kode" class="w-28 h-28">
+                </div> -->
+            </div>
+
+            <h2 class="text-xl font-semibold mt-3">{{ p.title }}</h2>
+            <p class="text-gray-700">Størrelse: {{ p.size }} cm</p>
+            <p class="text-gray-700">Materialer: {{ p.materials }}</p>
+            <p class="text-gray-700 font-bold">Pris: {{ p.price }} kr</p>
+        </div>
+
+    </section>
+
+    <!-- Info om malerier -->
+    <div class="bg-gray-200 p-6 rounded-lg shadow-md max-w-xl mx-auto text-gray-800 text-sm">
+        <div class="text-lg font-semibold text-gray-900 mb-2">Om malerierne</div>
+        <p class="mb-2">
+            Jeg maler med akrylfarver. Jeg former og bygger op, men er inspireret af det rustikke. 
+            Skønheden i en mur, ødelagt af tidens tand, der er malet over mange gange, og man står med en fornemmelse af tid, der er gået. 
+            Af ydre årsager, der har påvirket denne mur.
+            </p>
+            <p class="mb-2">
+            Farvefladerne eksploderer på mine lærreder, og man kan ikke finde mange andre flader end dem, 
+            der visuelt bliver skabt i hovedet. Jo længere væk man bevæger sig væk fra maleriet, jo mere samler billeder 
+            sig for beskuerens øjne. Der er ikke noget rigtigt billede, andet end det som beskueren oplever i øjeblikket 
+            foran maleriet. Lad fantasien løbe i fragmenterne af farver og former, der samler sig og lader figurer og følelser komme frem.
+        </p>
+        <p class="mb-2 font-semibold">Skriv til mig for mere information, udstilling eller køb på min mail:
+            {{email}}
+        </p>
+    </div>
+
+</main>
