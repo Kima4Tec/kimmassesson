@@ -1,0 +1,25 @@
+<div class="p-6">
+  <h1 class="text-2xl font-bold mb-4">Full-Stack Teknologioversigt</h1>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-200 shadow-md">
+      <thead class="bg-blue-900 text-white">
+        <tr>
+          <th class="px-4 py-2 text-left">Teknologi</th>
+          <th class="px-4 py-2 text-left">Kategori</th>
+          <th class="px-4 py-2 text-left">Primær anvendelse</th>
+          <th class="px-4 py-2 text-left">Nøglepunkter</th>
+          <th class="px-4 py-2 text-left">Færdighed</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <tr *ngFor="let tech of technologies" class="hover:bg-gray-100">
+          <td class="px-4 py-2">{{ tech.name }}</td>
+          <td class="px-4 py-2">{{ tech.category }}</td>
+          <td class="px-4 py-2">{{ tech.purpose }}</td>
+          <td class="px-4 py-2">{{ tech.keyPoints }}</td>
+          <td class="px-4 py-2 font-semibold">{{ tech.skill }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

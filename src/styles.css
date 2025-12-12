@@ -13,6 +13,8 @@
 
 body {
     @apply bg-white mt-18 text-black;
+    margin:0;
+    padding: 0
 }
 
 .prose {

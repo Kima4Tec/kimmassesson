@@ -35,19 +35,34 @@ export const appRoutes: Routes = [
       import('./pages/api-noter/api-noter').then((m) => m.ApiNoter),
   },
   {
-    path: 'about',
-    loadComponent: () =>
-      import('./pages/about/about.component').then((m) => m.AboutComponent),
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./pages/login/login.component').then((m) => m.LoginComponent),
-  },
-  {
     path: 'edit',
     loadComponent: () =>
       import('./pages/edit/edit.component').then((m) => m.EditComponent),
+  },
+    {
+    path: 'landscape',
+    loadComponent: () =>
+      import('./pages/landscape-template/landscape').then((m) => m.Landscape),
+  },
+      {
+    path: 'green',
+    loadComponent: () =>
+      import('./pages/green-template/green').then((m) => m.Green),
+  },
+        {
+    path: 'contact',
+    loadComponent: () =>
+      import('./pages/contact-template/contact').then((m) => m.Contact),
+  },
+          {
+    path: 'tech',
+    loadComponent: () =>
+      import('./pages/tech/tech').then((m) => m.Tech),
+  },
+          {
+    path: 'toolbar',
+    loadComponent: () =>
+      import('./pages/toolbar-template/toolbar').then((m) => m.Toolbar),
   },
   {
     path: 'ghpages',

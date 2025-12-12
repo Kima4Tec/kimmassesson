@@ -39,9 +39,9 @@
       'max-h-0 opacity-0 pointer-events-none': !menuOpen
     }">
         <div class="flex justify-start w-full px-14">
-            <div class="sm:grid-cols-6 grid w-3xl gap-8">
+            <div class="sm:grid-cols-7 grid w-4xl gap-8">
                 <div class="flex flex-col">
-                    <div class="text-blue-400 text-sm">HJEMMESIDER</div>
+                    <div class="text-blue-400 text-sm">WEB-PROJEKTER</div>
                     <a href="https://atopos.dk/" class="text-xs mt-1 hover:opacity-90">Atopos</a>
                     <a href="https://gnist.show/" class="text-xs mt-1 hover:opacity-90">Gnist</a>
                 </div>
@@ -82,15 +82,22 @@
                         cursor-pointer">Hobbyer</span>
                 </div>
                                 <div class="flex flex-col">
-                    <div class="text-blue-400 text-sm">NOTER</div>
-                    <span routerLink="/about" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
-                        cursor-pointer">Noter</span>
-                    <span routerLink="/login" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
-                        cursor-pointer">Redigér</span>
+                    <div class="text-blue-400 text-sm">SKABELONER</div>
+                     <span routerLink="/landscape" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Landscape</span>
+                     <span routerLink="/green" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Green</span>
+                     <span routerLink="/contact" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Kontakt-side</span>
+                                             <span routerLink="/toolbar" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Toolbar dropdown</span>
                 </div>
-
+                                                <div class="flex flex-col">
+                    <div class="text-blue-400 text-sm">TEKNOLOGIER</div>
+                     <span routerLink="/tech" (click)="toggleMenu()" class=" text-xs mt-1 hover:opacity-90
+                        cursor-pointer">Teknologier</span>
+                </div>
             </div>
-
         </div>
     </div>
 </nav>
