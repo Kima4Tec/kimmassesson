@@ -19,10 +19,31 @@ export class Paintings {
   paintings = [
     {
       title: 'Vrede',
-      size: '50x70',
+      size: '50x70 cm',
       price: 1500,
       materials: 'Akryl på lærred',
       image: 'images/paintings/vrede.jpg',
+    },
+        {
+      title: 'Lytten',
+      size: 'A4',
+      price: 200,
+      materials: 'Oliekridt på papir',
+      image: 'images/paintings/IMG_8320.jpg',
+    },
+            {
+      title: 'Forbavselse',
+      size: 'A4',
+      price: 200,
+      materials: 'Oliekridt på papir',
+      image: 'images/paintings/IMG_8319.jpg',
+    },
+                {
+      title: 'Kontemplation',
+      size: 'A4',
+      price: 200,
+      materials: 'Oliekridt på papir',
+      image: 'images/paintings/IMG_8322.jpg',
     },
 
   ];
