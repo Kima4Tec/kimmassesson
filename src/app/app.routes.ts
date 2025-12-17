@@ -30,9 +30,9 @@ export const appRoutes: Routes = [
       import('./pages/education/education').then((m) => m.Education),
   },
   {
-    path: 'apinoter',
+    path: 'prgnoter',
     loadComponent: () =>
-      import('./pages/api-noter/api-noter').then((m) => m.ApiNoter),
+      import('./pages/prg-noter/prg-noter').then((m) => m.PrgNoter),
   },
   {
     path: 'edit',
