@@ -7,20 +7,20 @@ import { Observable } from 'rxjs';
 import { MarkdownConfigModule } from '../../markdown-config.module';
 
 @Component({
-  selector: 'app-api-noter',
+  selector: 'app-prg-noter',
   standalone: true,
   imports: [MarkdownModule, AsyncPipe, MarkdownConfigModule],
-  templateUrl: './api-noter.html',
-  styleUrls: ['api-noter.css'], // rettet til styleUrls + korrekt array
+  templateUrl: './prg-noter.html',
+  styles: '', // rettet til styleUrls + korrekt array
 })
-export class ApiNoter {
+export class PrgNoter {
   private http = inject(HttpClient);
   private router = inject(Router);
   markdownContent$: Observable<string>;
   SecurityContext: any;
 
   constructor() {
-    this.markdownContent$ = this.http.get('api-noter.md', {
+    this.markdownContent$ = this.http.get('prg-noter.md', {
       responseType: 'text',
     });
 
