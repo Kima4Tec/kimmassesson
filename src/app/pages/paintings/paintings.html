@@ -1,6 +1,6 @@
 <main class="font-sans text-center bg-gray-100 min-h-screen p-4 mt-15">
 
-    <header class="bg-gray-900 text-white px-4 py-8 text-center">
+    <header class="bg-gray-700 text-white px-4 py-4 text-center rounded-lg">
         <div class="text-3xl font-bold mb-2">Mine Malerier</div>
     </header>
 
@@ -8,9 +8,7 @@
     <section class="flex flex-wrap justify-center gap-8 my-8">
 
         <!-- Loop gennem alle malerier -->
-        <div 
-            *ngFor="let p of paintings" 
-            class="bg-white p-4 rounded-lg w-64 shadow-md relative">
+        <div *ngFor="let p of paintings" class="bg-white p-4 rounded-lg w-64 shadow-md relative">
 
             <div class="relative">
                 <img [src]="p.image" [alt]="p.title" class="w-full rounded-md">
@@ -35,15 +33,17 @@
     <div class="bg-gray-200 p-6 rounded-lg shadow-md max-w-xl mx-auto text-gray-800 text-sm">
         <div class="text-lg font-semibold text-gray-900 mb-2">Om malerierne</div>
         <p class="mb-2">
-            Jeg maler med akrylfarver. Jeg former og bygger op, men er inspireret af det rustikke. 
-            Skønheden i en mur, ødelagt af tidens tand, der er malet over mange gange, og man står med en fornemmelse af tid, der er gået. 
+            Jeg maler med akrylfarver. Jeg former og bygger op, men er inspireret af det rustikke.
+            Skønheden i en mur, ødelagt af tidens tand, der er malet over mange gange, og man står med en fornemmelse af
+            tid, der er gået.
             Af ydre årsager, der har påvirket denne mur.
-            </p>
-            <p class="mb-2">
-            Farvefladerne eksploderer på mine lærreder, og man kan ikke finde mange andre flader end dem, 
-            der visuelt bliver skabt i hovedet. Jo længere væk man bevæger sig væk fra maleriet, jo mere samler billeder 
-            sig for beskuerens øjne. Der er ikke noget rigtigt billede, andet end det som beskueren oplever i øjeblikket 
-            foran maleriet. Lad fantasien løbe i fragmenterne af farver og former, der samler sig og lader figurer og følelser komme frem.
+        </p>
+        <p class="mb-2">
+            Farvefladerne eksploderer på mine lærreder, og man kan ikke finde mange andre flader end dem,
+            der visuelt bliver skabt i hovedet. Jo længere væk man bevæger sig væk fra maleriet, jo mere samler billeder
+            sig for beskuerens øjne. Der er ikke noget rigtigt billede, andet end det som beskueren oplever i øjeblikket
+            foran maleriet. Lad fantasien løbe i fragmenterne af farver og former, der samler sig og lader figurer og
+            følelser komme frem.
         </p>
         <p class="mb-2 font-semibold">Skriv til mig for mere information, udstilling eller køb på min mail:
             {{email}}
