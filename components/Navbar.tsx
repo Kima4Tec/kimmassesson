@@ -27,16 +27,16 @@ export default function Navbar() {
       </div>
 
       {/* Mobilmenu */}
-      {open && (
-        <div className="flex flex-col absolute top-16 left-0 w-full bg-white md:hidden shadow-md z-40 dark:bg-black dark:text-zinc-400">
-          <Link className="p-4 hover:text-orange-500 border-b border-zinc-200 dark:border-zinc-700" href="/">Home</Link>
-          <Link className="p-4 hover:text-orange-500 border-b border-zinc-200 dark:border-zinc-700" href="/aboutme">Om mig</Link>
-          <Link className="p-4 hover:text-orange-500 border-b border-zinc-200 dark:border-zinc-700" href="/skills">Skills</Link>
-          <Link className="p-4 hover:text-orange-500 border-b border-zinc-200 dark:border-zinc-700" href="/aboutpage">Om siden</Link>
-          <Link className="p-4 hover:text-orange-500 border-b border-zinc-200 dark:border-zinc-700" href="/history">Sidens udvikling</Link>
-          <div className="p-4">SoMe</div>
-        </div>
-      )}
+{open && (
+  <div className="flex flex-col absolute top-16 left-0 w-full bg-white md:hidden shadow-md dark:bg-black dark:text-zinc-400">
+    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/" onClick={() => setOpen(false)}>Home</Link>
+    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutme" onClick={() => setOpen(false)}>Om mig</Link>
+    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/skills" onClick={() => setOpen(false)}>Skills</Link>
+    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutpage" onClick={() => setOpen(false)}>Om siden</Link>
+    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/history" onClick={() => setOpen(false)}>Sidens udvikling</Link>
+    <div className="p-4">SoMe</div>
+  </div>
+)}
 
     </nav>
   )
