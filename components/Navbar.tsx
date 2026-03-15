@@ -22,7 +22,7 @@ export default function Navbar() {
         <Link className={pathname === "/skills" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/skills">Skills</Link>
         <Link className={pathname === "/aboutpage" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutpage">Om siden</Link>
         <Link className={pathname === "/history" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/history">Sidens udvikling</Link>
-        <div className="social-icons flex justify-end gap-3 sm:px-8 sm:py-3">
+        <div className="social-icons flex justify-end text-blue-600">
             <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
 <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
@@ -42,7 +42,11 @@ export default function Navbar() {
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/skills" onClick={() => setOpen(false)}>Skills</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutpage" onClick={() => setOpen(false)}>Om siden</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/history" onClick={() => setOpen(false)}>Sidens udvikling</Link>
-    <div className="p-4">SoMe</div>
+        <div className="social-icons p-4 text-blue-600">
+            <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
+<FontAwesomeIcon icon={faLinkedinIn} />
+            </a>
+        </div>
   </div>
 )}
 
