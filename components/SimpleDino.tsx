@@ -74,7 +74,7 @@ useEffect(() => {
 
   return (
     <div className="text-center font-mono">
-      <h1 className="text-2xl font-bold mb-2">Simple Dino</h1>
+      <h1 className="text-2xl font-bold mb-2">Page not found - play Simple Dino</h1>
       <i>Tryk på mellemrum for at hoppe</i>
 
       <div className="text-left text-lg mt-4 mb-4 ml-5">Score: {score}</div>
