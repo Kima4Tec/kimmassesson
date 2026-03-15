@@ -5,7 +5,7 @@ export default function About() {
         <h1 className="text-3xl font-bold">Om mig</h1>
         <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
           Hej! Jeg hedder Kim Massesson og er en passioneret webudvikler
-          nysgerrig på forskellige frontend-teknologier.
+          nysgerrig på forskellige frontend- og backend-teknologier.
         </p>
         <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
           Jeg har erfaring med HTML, JavaScript, Angular og Tailwind CSS. Jeg
@@ -17,7 +17,8 @@ export default function About() {
           brugergrænseflader.
         </p>
         <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
-          Denne side er et eksperiment for at udforske Next.js og Tailwind CSS,
+          Denne side er et eksperiment for at udforske Next.js, der både kan
+          være frontend og backend, samt Tailwind CSS,
           og jeg håber, du finder den interessant!
         </p>
       </main>
