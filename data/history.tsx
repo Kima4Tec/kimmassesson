@@ -1,5 +1,6 @@
 export const history = [
     // {date: "", text: ""},
+                {date: "15-03-2026", text: "Opdateret favicon til mit eget"},
             {date: "15-03-2026", text: "Optimeret mobilvisning"},
         {date: "15-03-2026", text: "Siden er optimeret til darkmode og lightmode"},
     {date: "15-03-2026", text: "Lavet hamburgermenu til mobilvisning"},
