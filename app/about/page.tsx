@@ -1,0 +1,26 @@
+export default function About() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center gap-4 py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <h1 className="text-3xl font-bold">Om mig</h1>
+        <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
+          Hej! Jeg hedder Kim Massesson og er en passioneret webudvikler
+          nysgerrig på forskellige frontend-teknologier.
+        </p>
+        <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
+          Jeg har erfaring med HTML, JavaScript, Angular og Tailwind CSS. Jeg
+          har også kigget på React og Nestjs.
+        </p>
+        <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
+          Jeg er en nysgerrig person, der elsker at lære nye ting og er
+          inspireret af frontend, fordi man kan skabe smukke og funktionelle
+          brugergrænseflader.
+        </p>
+        <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
+          Denne side er et eksperiment for at udforske Next.js og Tailwind CSS,
+          og jeg håber, du finder den interessant!
+        </p>
+      </main>
+    </div>
+  );
+}
