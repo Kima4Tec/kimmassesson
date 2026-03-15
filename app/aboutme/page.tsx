@@ -13,7 +13,7 @@ export default function About() {
           på næsten 5 år.<br /> Hvis alt går vel, er jeg færdiguddannet i august 2027.
         </p>
         <p className="max-w-md text-lg mb-3 text-zinc-600 dark:text-zinc-400">
-          Jeg har erfaring med HTML, JavaScript, Angular og Tailwind CSS. Jeg
+          I forhold til frontend har jeg erfaring med HTML, JavaScript, Angular og Tailwind CSS. Jeg
           har også kigget på React og Nestjs.
         </p>
         <p className="max-w-md text-lg mb-3 text-zinc-600 dark:text-zinc-400">
