@@ -1,0 +1,17 @@
+export const history = [
+    // {date: "", text: ""},
+    {date: "15-03-2026", text: "Har opdateret min udviklingsside"},
+    {date: "15-03-2026", text: "Lavede en skils-component og en skills-side"},
+    {date: "15-03-2026", text: "Oprettet data/skills.tsx, hvor jeg smed data fra mit gamle Angular projekt"},
+  { date: "15-03-2026", text: "Oprettet Navbar i components/Navbar.tsx og importeret den i layout.tsx" },
+  { date: "15-03-2026", text: "Siden er nu live på https://kimmassesson.dk" },
+  { date: "15-03-2026", text: "Har tidligere købt domænet kimmassesson.dk gennem Simply.com - ændrede navneserverne her til at pege mod Vercel" },
+  { date: "15-03-2026", text: "Oprettede et projekt hos Vercel, forbundet til min GitHub side, der bliver opdateret, hver gang jeg committer til GitHub" },
+  { date: "15-03-2026", text: "Oprettede en bruger hos Vercel", link: "https://vercel.com" },
+  { date: "15-03-2026", text: "Uploadede siden til Github" },
+  { date: "15-03-2026", text: "Oprettede en side med navnet history" },
+  { date: "15-03-2026", text: "Oprettede en side med navnet aboutpage" },
+  { date: "15-03-2026", text: "Oprettede en side med navnet aboutme" },
+  { date: "15-03-2026", text: "Slettede home-siden, som Nextjs havde lavet, og oprettede en ny side med navnet Home" },
+  { date: "15-03-2026", text: "Oprettede Nextjs hjemmeside med kommandoen: npx create-next-app@latest kimmassesson" },
+];

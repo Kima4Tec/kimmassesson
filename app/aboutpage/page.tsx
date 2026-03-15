@@ -1,8 +1,7 @@
 export default function AboutPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center gap-4 py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="text-3xl font-bold">Om siden</h1>
+    <main className="max-w-6xl mx-auto p-10 dark:bg-black sm:items-start">
+      <h1 className="text-3xl font-bold mb-8">Om siden</h1>
         <p className="text-lg">
           Sidens kode ligger på GitHub:{" "}
           <a
@@ -37,6 +36,6 @@ export default function AboutPage() {
 
 
       </main>
-    </div>
+
   );
 }

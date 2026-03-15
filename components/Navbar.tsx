@@ -7,6 +7,7 @@ export default function Navbar() {
       <div className="flex flex-row gap-10">
         <Link className="hover:text-orange-500" href="/">Home</Link>
         <Link className="hover:text-orange-500" href="/aboutme">Om mig</Link>
+        <Link className="hover:text-orange-500" href="/skills">Skills</Link>
         <Link className="hover:text-orange-500" href="/aboutpage">Om siden</Link>
         <Link className="hover:text-orange-500" href="/history">Sidens udvikling</Link>
       </div>
