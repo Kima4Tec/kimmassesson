@@ -1,4 +1,4 @@
-import SimpleDino from "../../components/SimpleDino";
+import SimpleDino from "../components/SimpleDino";
 
 export default function NotFound() {
   return (
