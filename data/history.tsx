@@ -1,5 +1,6 @@
 export const history = [
     // {date: "", text: ""},
+  { date: "15-03-2026", text: "Indsat dino-spil som notfound side. Et spil, som jeg lavede efter en Youtube-video og her omsat til Next.js."},
   { date: "15-03-2026", text: "Indsat link til LinkedIn i navbaren"},
   { date: "15-03-2026", text: "Lagde billeder ind på siden"},
   { date: "15-03-2026", text: "Opdateret favicon til mit eget"},
