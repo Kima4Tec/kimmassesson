@@ -7,9 +7,15 @@ export default function SimpleDino() {
   const cactusRef = useRef<HTMLDivElement>(null);
 
   // Hent highscore fra localStorage
-  const [highscores, setHighscores] = useState<{ name: string; points: number }[]>(() => {
-    return JSON.parse(localStorage.getItem("dinoScores") || "[]");
-  });
+// Hent highscore fra localStorage
+const [highscores, setHighscores] = useState<{ name: string; points: number }[]>([]);
+
+useEffect(() => {
+  const storedScores = localStorage.getItem("dinoScores");
+  if (storedScores) {
+    setHighscores(JSON.parse(storedScores));
+  }
+}, []);
 
   // Jump funktion
   const jump = () => {

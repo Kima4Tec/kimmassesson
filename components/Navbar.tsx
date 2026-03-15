@@ -13,8 +13,10 @@ export default function Navbar() {
     <nav className="flex w-full justify-between items-center text-md px-10 p-3 sticky top-0 border-b border-zinc-200 bg-white/80 backdrop-blur shadow-sm z-50 dark:bg-black dark:text-zinc-400 dark:border-zinc-700">
       
       {/* Logo */}
+      <div className="flex flex-row gap-2">
+      <img className="w-6 h-6" src="icon.png" alt="logo" />
       <div className="font-bold">Kim Massesson</div>
-
+</div>
       {/* Desktop menu */}
       <div className="hidden md:flex flex-row gap-10 items-center dark:bg-black dark:text-zinc-400">
         <Link className={pathname === "/" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/">Home</Link>
