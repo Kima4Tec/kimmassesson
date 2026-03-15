@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -22,7 +24,7 @@ export default function Navbar() {
         <Link className={pathname === "/history" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/history">Sidens udvikling</Link>
         <div className="social-icons flex justify-end gap-3 sm:px-8 sm:py-3">
             <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
-                <i className="fab fa-linkedin-in text-blue-400 text-lg"></i>
+<FontAwesomeIcon icon={faLinkedinIn} />
             </a>
         </div>
       </div>
