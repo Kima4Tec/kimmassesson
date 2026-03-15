@@ -6,7 +6,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex w-full justify-between items-center text-md px-10 p-3 sticky top-0 border-b border-zinc-200 bg-white/80 backdrop-blur shadow-sm z-50">
+    <nav className="flex w-full justify-between items-center text-md px-10 p-3 sticky top-0 border-b border-zinc-200 bg-white/80 backdrop-blur shadow-sm z-50 dark:text-zinc-400">
       
       {/* Logo */}
       <div className="font-bold">Kim Massesson</div>

@@ -20,6 +20,8 @@ export default function About() {
           være frontend og backend, samt Tailwind CSS,
           og jeg håber, du finder den interessant!
         </p>
+        <img className="max-w-md rounded mt-5" src="thinkpad.png" alt="thinkpad" />
+        <div className="italic mt-1">Billedet er generet med ChatGpt</div>
       </main>
   );
 }

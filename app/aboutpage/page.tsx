@@ -14,12 +14,13 @@ export default function AboutPage() {
           </a>
           
         </p>
-        <p>Den er bygget med Next.js og Tailwind CSS, og jeg har brugt TypeScript til at skrive koden. 
-          Jeg har også brugt Vercel til at hoste siden, hvilket gør det nemt at deploye og opdatere den.
-          Domænet er købt gennem Simply.com, og jeg har konfigureret det til at pege på min Vercel-hostede side.
+        <p className="mt-5 mb-5">Den er bygget med <b>Next.js</b> og <b>Tailwind CSS</b>, og jeg har brugt <b>TypeScript</b> til at skrive koden. 
+          Jeg har brugt <b>Vercel</b> til at hoste siden, hvilket gør det nemt at deploye og opdatere den.
+          Domænet er købt gennem <b>Simply.com</b>, og jeg har konfigureret det til at pege på min Vercel-hostede side.
           </p>
-
-            Da jeg oprettede siden, blev disse dependencies installeret:
+            
+            <h3 className="text-lg font-semibold">Dependencies</h3>
+            <p className="mb-2">Da jeg oprettede siden, blev disse dependencies installeret:</p>
             <ul className="list-disc list-inside ml-4">
               <li>next.js</li>
               <li>tailwind CSS</li>
