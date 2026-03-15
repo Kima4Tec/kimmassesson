@@ -18,7 +18,8 @@ export default function AboutPage() {
           Jeg har brugt <b>Vercel</b> til at hoste siden, hvilket gør det nemt at deploye og opdatere den.
           Domænet er købt gennem <b>Simply.com</b>, og jeg har konfigureret det til at pege på min Vercel-hostede side.
           </p>
-            
+<div className="md:grid md:grid-cols-2 gap-4">
+            <div  className="p-10 mt-5 md:max-w-xs lg:max-w-md rounded-xl shadow-xs shadow-zinc-600">
             <h3 className="text-lg font-semibold">Dependencies</h3>
             <p className="mb-2">Da jeg oprettede siden, blev disse dependencies installeret:</p>
             <ul className="list-disc list-inside ml-4">
@@ -34,8 +35,11 @@ export default function AboutPage() {
               <li>eslint</li>
               <li>eslint-config-next</li>
             </ul>
-
-
+            </div>
+        <div>
+        <img className="mt-5 md:max-w-xs lg:max-w-md rounded-xl shadow-xs shadow-zinc-600" src="motherboard.png" alt="Kim Massesson" />
+        </div>
+</div>
       </main>
 
   );

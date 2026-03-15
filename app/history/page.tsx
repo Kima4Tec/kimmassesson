@@ -12,7 +12,7 @@ export default function History() {
         <p className="text-lg mb-10">
           Jeg håber, at jeg i udviklingen af siden, lærer en masse om Next.js.
         </p>
-        <div className="text-xl font-semibold mb-5">Udviklingshistorie i trin</div>
+        <div className="text-xl font-semibold mb-5">Marts 2026</div>
 <Timeline />
       </main>
   );

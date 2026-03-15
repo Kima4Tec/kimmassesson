@@ -1,9 +1,11 @@
 "use client"
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="flex w-full justify-between items-center text-md px-10 p-3 sticky top-0 border-b border-zinc-200 bg-white/80 backdrop-blur shadow-sm z-50 dark:bg-black dark:text-zinc-400 dark:border-zinc-700">
@@ -13,11 +15,11 @@ export default function Navbar() {
 
       {/* Desktop menu */}
       <div className="hidden md:flex flex-row gap-10 items-center dark:bg-black dark:text-zinc-400">
-        <Link className="hover:text-orange-500" href="/">Home</Link>
-        <Link className="hover:text-orange-500" href="/aboutme">Om mig</Link>
-        <Link className="hover:text-orange-500" href="/skills">Skills</Link>
-        <Link className="hover:text-orange-500" href="/aboutpage">Om siden</Link>
-        <Link className="hover:text-orange-500" href="/history">Sidens udvikling</Link>
+        <Link className={pathname === "/" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/">Home</Link>
+        <Link className={pathname === "/aboutme" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutme">Om mig</Link>
+        <Link className={pathname === "/skills" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/skills">Skills</Link>
+        <Link className={pathname === "/aboutpage" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutpage">Om siden</Link>
+        <Link className={pathname === "/history" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/history">Sidens udvikling</Link>
         <div>SoMe</div>
       </div>
 
