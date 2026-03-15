@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <main className="max-w-6xl mx-auto my-5 p-10 dark:bg-black sm:items-start">
+    <main className="max-w-6xl mx-auto p-10 rounded dark:bg-black sm:items-start">
       <h1 className="text-3xl font-bold mb-8">Om mig</h1>
         <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
           Hej! Jeg hedder Kim Massesson og er en passioneret webudvikler
@@ -21,7 +21,6 @@ export default function About() {
           og jeg håber, du finder den interessant!
         </p>
         <img className="max-w-md rounded mt-5" src="thinkpad.png" alt="thinkpad" />
-
       </main>
   );
 }
