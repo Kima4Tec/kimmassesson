@@ -1,6 +1,7 @@
 export const history = [
     // {date: "", text: ""},
-  { date: "15-03-2026", text: "Lagt billeder ind på siden"},
+  { date: "15-03-2026", text: "Indsat link til LinkedIn i navbaren"},
+  { date: "15-03-2026", text: "Lagde billeder ind på siden"},
   { date: "15-03-2026", text: "Opdateret favicon til mit eget"},
   { date: "15-03-2026", text: "Optimeret mobilvisning"},
   { date: "15-03-2026", text: "Siden er optimeret til darkmode og lightmode"},
