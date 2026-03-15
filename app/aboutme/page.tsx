@@ -8,7 +8,7 @@ export default function About() {
           nysgerrig på forskellige frontend- og backend-teknologier.
         </p>
         <p className="max-w-md text-lg mb-3 text-zinc-600 dark:text-zinc-400">
-          Jeg har min daglige gang i Hvidover, hvor jeg er lærling på TECs erhvervsuddannelse
+          Jeg har min daglige gang i Hvidovre, hvor jeg er lærling på TECs erhvervsuddannelse
           som datatekniker med specialisering i programmering. En uddannelse
           på næsten 5 år.<br /> Hvis alt går vel, er jeg færdiguddannet i august 2027.
         </p>
