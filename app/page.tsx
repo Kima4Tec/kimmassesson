@@ -7,7 +7,9 @@ export default function Home() {
 
 <div className="text-lg sm:max-w-md text-zinc-600 dark:text-zinc-400"> 
   Velkommen til min side. Dette er et udviklingsprojekt i Nextjs, der skal ende med at være en portefølje-side om mig.
-  Jeg har med vilje valgt at lægge siden op helt fra starten, lige efter at jeg har oprettet den med Next.js, så man kan følge udviklingen af siden. </div>
+  Jeg har med vilje valgt at lægge siden op helt fra starten, lige efter at jeg har oprettet den med Next.js, så man kan følge udviklingen af siden. 
+  Du kan følge trinene i udviklingen under <Link className="font-semibold hover:text-orange-500" href="/history">Sidens udvikling</Link>
+  </div>
           <img className="mt-5 md:max-w-md rounded-xl shadow-md shadow-zinc-600" src="thinkpad.png" alt="thinkpad" />
       </main>
   );

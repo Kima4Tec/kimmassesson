@@ -20,7 +20,11 @@ export default function Navbar() {
         <Link className={pathname === "/skills" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/skills">Skills</Link>
         <Link className={pathname === "/aboutpage" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutpage">Om siden</Link>
         <Link className={pathname === "/history" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/history">Sidens udvikling</Link>
-        <div>SoMe</div>
+        <div className="social-icons flex justify-end gap-3 sm:px-8 sm:py-3">
+            <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
+                <i className="fab fa-linkedin-in text-blue-400 text-lg"></i>
+            </a>
+        </div>
       </div>
 
       {/* Hamburger ikon til mobil */}
