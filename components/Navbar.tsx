@@ -11,24 +11,25 @@ export default function Navbar() {
 
   return (
     <nav className="flex w-full justify-between items-center text-md px-10 p-3 sticky top-0 border-b border-zinc-200 bg-white/80 backdrop-blur shadow-sm z-50 dark:bg-black dark:text-zinc-400 dark:border-zinc-700">
-      
+
       {/* Logo */}
       <div className="flex flex-row gap-2">
-      <img className="w-6 h-6" src="icon.png" alt="logo" />
-      <div className="font-bold">Kim Massesson</div>
-</div>
+        <img className="w-6 h-6" src="icon.png" alt="logo" />
+        <div className="font-bold">Kim Massesson</div>
+      </div>
       {/* Desktop menu */}
       <div className="hidden lg:flex flex-row gap-10 items-center dark:bg-black dark:text-zinc-400">
         <Link className={pathname === "/" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/">Home</Link>
         <Link className={pathname === "/aboutme" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutme">Om mig</Link>
         <Link className={pathname === "/skills" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/skills">Skills</Link>
-                <Link className={pathname === "/projects" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/projects">Projekter</Link>
+        <Link className={pathname === "/projects" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/projects">Projekter</Link>
+        <Link className={pathname === "/documentation" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/projects">Portefølje</Link>
         <Link className={pathname === "/aboutpage" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutpage">Om siden</Link>
         <Link className={pathname === "/history" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/history">Sidens udvikling</Link>
         <div className="social-icons flex justify-end text-blue-600">
-            <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
-<FontAwesomeIcon icon={faLinkedinIn} />
-            </a>
+          <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </a>
         </div>
       </div>
 
@@ -38,21 +39,22 @@ export default function Navbar() {
       </div>
 
       {/* Mobilmenu */}
-{open && (
-  <div className="flex flex-col absolute top-16 left-0 w-full bg-white lg:hidden shadow-md dark:bg-black dark:text-zinc-400">
-    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/" onClick={() => setOpen(false)}>Home</Link>
-    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutme" onClick={() => setOpen(false)}>Om mig</Link>
-    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/skills" onClick={() => setOpen(false)}>Skills</Link>
-        <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/projects" onClick={() => setOpen(false)}>Projekter</Link>
-    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutpage" onClick={() => setOpen(false)}>Om siden</Link>
-    <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/history" onClick={() => setOpen(false)}>Sidens udvikling</Link>
-        <div className="social-icons p-4 text-blue-600">
+      {open && (
+        <div className="flex flex-col absolute top-16 left-0 w-full bg-white lg:hidden shadow-md dark:bg-black dark:text-zinc-400">
+          <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/" onClick={() => setOpen(false)}>Home</Link>
+          <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutme" onClick={() => setOpen(false)}>Om mig</Link>
+          <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/skills" onClick={() => setOpen(false)}>Skills</Link>
+          <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/projects" onClick={() => setOpen(false)}>Projekter</Link>
+          <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/documentation" onClick={() => setOpen(false)}>Portefølje</Link>
+          <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutpage" onClick={() => setOpen(false)}>Om siden</Link>
+          <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/history" onClick={() => setOpen(false)}>Sidens udvikling</Link>
+          <div className="social-icons p-4 text-blue-600">
             <a href="https://www.linkedin.com/in/kim-m-9b9416159/">
-<FontAwesomeIcon icon={faLinkedinIn} />
+              <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
+          </div>
         </div>
-  </div>
-)}
+      )}
 
     </nav>
   )
