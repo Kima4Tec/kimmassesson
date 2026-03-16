@@ -43,6 +43,7 @@ export default function Navbar() {
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/" onClick={() => setOpen(false)}>Home</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutme" onClick={() => setOpen(false)}>Om mig</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/skills" onClick={() => setOpen(false)}>Skills</Link>
+        <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/projects" onClick={() => setOpen(false)}>Projekter</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutpage" onClick={() => setOpen(false)}>Om siden</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/history" onClick={() => setOpen(false)}>Sidens udvikling</Link>
         <div className="social-icons p-4 text-blue-600">
