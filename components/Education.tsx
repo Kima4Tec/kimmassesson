@@ -33,7 +33,7 @@ export default function Education() {
     <br/>
     <div>
         <h3 className="text-xl font-semibold text-gray-700">Sprog</h3>
-        <img src="language.png" alt="Sprog" className="w-1/3 rounded-lg mt-2 space-y-1"/>
+        <img src="language.png" alt="Sprog" className="lg:w-1/3 rounded-lg mt-2 space-y-1"/>
     </div>
     </main>
   );
