@@ -1,5 +1,7 @@
 export const history = [
     // {date: "", text: ""},
+  { date: "16-03-2026", text: "Rettede mobilvisning lidt, da navbaren klumpede sammen ved visning af mobil horisontalt."},
+  { date: "16-03-2026", text: "Opdateret projektsiden. Den består af tre sider: Data, card og page."},
   { date: "15-03-2026", text: "Indsat dino-spil som notfound side. Et spil, som jeg lavede efter en Youtube-video og her omsat til Next.js."},
   { date: "15-03-2026", text: "Indsat link til LinkedIn i navbaren"},
   { date: "15-03-2026", text: "Lagde billeder ind på siden"},
