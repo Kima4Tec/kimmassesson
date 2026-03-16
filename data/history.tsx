@@ -1,6 +1,7 @@
 export const history = [
     // {date: "", text: ""},
-      { date: "16-03-2026", text: "Fjernede dino-spil igen, da det tilsyneladende blev ved med at kompilere i baggrunden, når det først kørte."},
+      { date: "16-03-2026", text: "Oprettet portefølje med erfaring, uddannelse og hobbyer. Visning ved klik"},
+  { date: "16-03-2026", text: "Fjernede dino-spil igen, da det tilsyneladende blev ved med at kompilere i baggrunden, når det først kørte."},
   { date: "16-03-2026", text: "Rettede mobilvisning lidt, da navbaren klumpede sammen ved visning af mobil horisontalt."},
   { date: "16-03-2026", text: "Opdateret projektsiden. Den består af tre sider: Data, card og page."},
   { date: "15-03-2026", text: "Indsat dino-spil som notfound side. Et spil, som jeg lavede efter en Youtube-video og her omsat til Next.js."},
