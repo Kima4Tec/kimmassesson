@@ -1,6 +1,6 @@
 export default function Experience() {
   return (
-    <main className="p-6 bg-white shadow rounded-lg max-w-4xl mx-auto mb-5">
+    <main className="p-6 bg-white shadow rounded-b-lg max-w-4xl mx-auto mb-5">
    <h2 className="text-2xl font-bold mb-6 text-gray-800">Udvalgt Erhvervserfaring</h2>
 
 

@@ -14,12 +14,12 @@ const [open, setOpen] = useState<string | null>("experience");
           <button onClick={() => setOpen("experience")} className={open === "experience" ? "text-black" : "hover:text-gray-600"}>Joberfaring</button>
           <button onClick={() => setOpen("education")} className={open === "education" ? "text-black" : "hover:text-gray-600"}>Uddannelse</button>
           <button onClick={() => setOpen("hobbies")} className={open === "hobbies" ? "text-black" : "hover:text-gray-600"}>Hobbyer</button>
-          <button onClick={() => setOpen("show-all")} className={open === "show-all" ? "text-black" : "hover:text-gray-600"}>Vis alt</button>
+          {/* <button onClick={() => setOpen("show-all")} className={open === "show-all" ? "text-black" : "hover:text-gray-600"}>Vis alt</button> */}
  </div>
           {open === "experience" && (<Experience />)}
           {open === "education" && (<Education />)}
           {open === "hobbies" && (<Hobbies />)}
-          {open === "show-all" && (<><Experience /> <Education /> <Hobbies /></>)}
+          {/* {open === "show-all" && (<><Experience /> <Education /> <Hobbies /></>)} */}
     </main>
   );
 }
