@@ -23,7 +23,7 @@ export default function Navbar() {
         <Link className={pathname === "/aboutme" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutme">Om mig</Link>
         <Link className={pathname === "/skills" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/skills">Skills</Link>
         <Link className={pathname === "/projects" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/projects">Projekter</Link>
-        <Link className={pathname === "/documentation" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/projects">Portefølje</Link>
+        <Link className={pathname === "/documentation" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/documentation">Portefølje</Link>
         <Link className={pathname === "/aboutpage" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutpage">Om siden</Link>
         <Link className={pathname === "/history" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/history">Sidens udvikling</Link>
         <div className="social-icons flex justify-end text-blue-600">
