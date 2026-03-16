@@ -1,4 +1,6 @@
-import Link from "next/link";
+import Link from "next/link"
+import { myProjects } from "../../data/project"
+import ProjectCard from "@/components/ProjectCard"
 
 export default function projects() {
       return (
@@ -10,5 +12,14 @@ Jeg har lavet mange projekter. På Github har jeg over 130 repositories, og der 
 På denne side vil jeg kun vise de sider, der er online.
   </div>
           <img className="mt-5 md:max-w-md rounded-xl shadow-md shadow-zinc-600" src="projects.png" alt="projekter" />
+
+      <h1 className="text-3xl font-bold mb-5 mt-15">- - -</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {myProjects.map((myProjects) => (
+          <ProjectCard key={myProjects.name} myProject={myProjects} />
+        ))}
+      </div>
+
       </main>
 )}

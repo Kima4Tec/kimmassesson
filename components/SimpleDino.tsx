@@ -73,11 +73,11 @@ useEffect(() => {
   };
 
   return (
-    <div className="text-center font-mono">
-      <h1 className="text-2xl font-bold mb-2">Page not found - play Simple Dino</h1>
+    <div className="text-center font-mono dark:bg-black dark">
+      <h1 className="text-2xl font-bold mb-2 dark:bg-black dark">Page not found - play Simple Dino</h1>
       <i>Tryk på mellemrum for at hoppe</i>
 
-      <div className="text-left text-lg mt-4 mb-4 ml-5">Score: {score}</div>
+      <div className="text-left text-lg mt-4 mb-4 ml-5 dark:bg-black dark">Score: {score}</div>
 
       <div className="relative w-150 h-50 bg-white border-b-2 border-zinc-500 mx-auto">
         <div
@@ -90,7 +90,7 @@ useEffect(() => {
         ></div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 dark:bg-black dark">
         <h3 className="mb-2 text-lg">🏆 TOP 5 HIGHSCORES 🏆</h3>
         <table className="mx-auto w-75 border border-zinc-400 text-left">
           <thead>

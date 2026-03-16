@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="font-bold">Kim Massesson</div>
 </div>
       {/* Desktop menu */}
-      <div className="hidden md:flex flex-row gap-10 items-center dark:bg-black dark:text-zinc-400">
+      <div className="hidden lg:flex flex-row gap-10 items-center dark:bg-black dark:text-zinc-400">
         <Link className={pathname === "/" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/">Home</Link>
         <Link className={pathname === "/aboutme" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/aboutme">Om mig</Link>
         <Link className={pathname === "/skills" ? "underline underline-offset-18 decoration-3" : "hover:text-orange-600"} href="/skills">Skills</Link>
@@ -33,13 +33,13 @@ export default function Navbar() {
       </div>
 
       {/* Hamburger ikon til mobil */}
-      <div className="md:hidden cursor-pointer text-2xl" onClick={() => setOpen(!open)}>
+      <div className="lg:hidden cursor-pointer text-2xl" onClick={() => setOpen(!open)}>
         {open ? "×" : "☰"}
       </div>
 
       {/* Mobilmenu */}
 {open && (
-  <div className="flex flex-col absolute top-16 left-0 w-full bg-white md:hidden shadow-md dark:bg-black dark:text-zinc-400">
+  <div className="flex flex-col absolute top-16 left-0 w-full bg-white lg:hidden shadow-md dark:bg-black dark:text-zinc-400">
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/" onClick={() => setOpen(false)}>Home</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/aboutme" onClick={() => setOpen(false)}>Om mig</Link>
     <Link className="p-4 hover:text-orange-500 border-b dark:border-zinc-700" href="/skills" onClick={() => setOpen(false)}>Skills</Link>
