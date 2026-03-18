@@ -4,7 +4,7 @@ export default function About() {
       <div>
       <h1 className="text-3xl font-bold mb-5">Om mig</h1>
         <p className="max-w-md text-lg mb-3 text-zinc-600 dark:text-zinc-400">
-          Jeg hedder Kim Massesson og er en passioneret webudvikler
+          Jeg hedder Kim Massesson og er en passioneret fullstack-udvikler
           nysgerrig på forskellige frontend- og backend-teknologier.
         </p>
         <p className="max-w-md text-lg mb-3 text-zinc-600 dark:text-zinc-400">
