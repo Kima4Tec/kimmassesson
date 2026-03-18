@@ -1,13 +1,13 @@
 export default function Experience() {
   return (
-    <main className="p-6 bg-white shadow rounded-b-lg max-w-4xl mx-auto mb-5">
-   <h2 className="text-2xl font-bold mb-6 text-gray-800">Udvalgt Erhvervserfaring</h2>
+    <main className="p-6 bg-white dark:bg-gray-900 shadow rounded-b-lg max-w-4xl mx-auto mb-5">
+   <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Udvalgt Erhvervserfaring</h2>
 
 
     <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-700">Datateknikerlærling – SOP, TEC</h3>
-        <p className="text-sm text-gray-500">2024 –</p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        <h3 className="text-xl font-semibold text-gray-700  dark:text-white">Datateknikerlærling – SOP, TEC</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-300">2024 –</p>
+        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 dark:text-gray-400">
             <li>Bl.a. HTML, CSS, JavaScript, Blazor, C#, Linux, Docker, SQL, Angular, React, NextJs, TypeScript, Git</li>
             <li>Har lavet mange forskellige projekter både frontend og backend samt konsol</li>
         </ul>
@@ -15,9 +15,9 @@ export default function Experience() {
 
 
     <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-700">Datateknikerlærling – Miranda Partners</h3>
-        <p className="text-sm text-gray-500">2023 – 2024</p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        <h3 className="text-xl font-semibold text-gray-700 dark:text-white">Datateknikerlærling – Miranda Partners</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-300">2023 – 2024</p>
+        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 dark:text-gray-400">
             <li>C# kodekommentarer og dokumentation</li>
             <li>DM server, OpenText og manualer</li>
         </ul>
@@ -25,9 +25,9 @@ export default function Experience() {
 
 
     <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-700">Projektudvikler (konsulent) – Tuwano</h3>
-        <p className="text-sm text-gray-500">2018 – 2020</p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        <h3 className="text-xl font-semibold text-gray-700 dark:text-white">Projektudvikler (konsulent) – Tuwano</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-400">2018 – 2020</p>
+        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 dark:text-gray-400">
             <li>Databehandling, analyser og grafiske præsentationer</li>
             <li>Udbudsansøgninger med data og research</li>
             <li>Kvalitative interviews med medarbejdere</li>
@@ -36,9 +36,9 @@ export default function Experience() {
 
 
     <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-700">Projektkoordinator / Mentor – Keepgoing</h3>
-        <p className="text-sm text-gray-500">2016 – 2018</p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        <h3 className="text-xl font-semibold text-gray-700 dark:text-white">Projektkoordinator / Mentor – Keepgoing</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-300">2016 – 2018</p>
+        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 dark:text-gray-400">
             <li>Motivationsarbejde og kommunikation</li>
             <li>Undervisning og visitationssamtaler</li>
             <li>Nyhedsbreve, projektbeskrivelser og brochurer</li>
@@ -48,19 +48,19 @@ export default function Experience() {
 
 
     <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-700">Ansvarlig – Klubtilbud Undergrunden, Lyngby-Taarbæk Ungdomsskole
+        <h3 className="text-xl font-semibold text-gray-700 dark:text-white">Ansvarlig – Klubtilbud Undergrunden, Lyngby-Taarbæk Ungdomsskole
         </h3>
-        <p className="text-sm text-gray-500">2017 – 2019</p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        <p className="text-sm text-gray-500 dark:text-gray-300">2017 – 2019</p>
+        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 dark:text-gray-400">
             <li>Relationsarbejde og personaleansvar (4 medarbejdere)</li>
             <li>Deltog i og organiserede kreative og sportslige aktiviteter</li>
         </ul>
     </div>
 
     <div>
-        <h3 className="text-xl font-semibold text-gray-700">Pædagogisk arbejde – Institutioner og bosteder</h3>
-        <p className="text-sm text-gray-500">1988 – 2006</p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        <h3 className="text-xl font-semibold text-gray-700 dark:text-white">Pædagogisk arbejde – Institutioner og bosteder</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-300">1988 – 2006</p>
+        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1 dark:text-gray-400">
             <li>Uuddannet pædagog i både normal- og specialområdet</li>
             <li>Erfaring fra opholdssteder, børnehaver, fritidshjem og -klubber</li>
         </ul>

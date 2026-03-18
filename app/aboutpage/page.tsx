@@ -1,7 +1,7 @@
 export default function AboutPage() {
   return (
     <main className="max-w-6xl mx-auto p-10 dark:bg-black sm:items-start">
-      <h1 className="text-3xl font-bold mb-8">Om siden</h1>
+      <h1 className="text-3xl font-bold mb-8">Lidt om siden</h1>
         <p className="text-lg">
           Sidens kode ligger på GitHub:{" "}
           <a

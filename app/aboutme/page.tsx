@@ -28,7 +28,7 @@ export default function About() {
         </p>
         </div>
         <div>
-        <img className="mt-5 md:mt-15 md:ml-15 md:max-w-xs lg:max-w-md rounded-xl shadow-md shadow-zinc-600" src="kim.png" alt="Kim Massesson" />
+        <img className="mt-5 md:mt-15 md:ml-15 md:max-w-xs lg:max-w-md rounded-xl shadow-md dark:shadow-none shadow-zinc-600" src="kim.png" alt="Kim Massesson" />
         </div>
       </main>
   );

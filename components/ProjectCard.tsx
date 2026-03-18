@@ -4,7 +4,7 @@ import { MyProject } from "../data/project"
 export default function ProjectCard({ myProject }: { myProject: MyProject }) {
   return (
 
-    <div className="rounded-xl mt-10 overflow-hidden shadow-md shadow-zinc-600 bg-white dark:bg-zinc-900 flex flex-col">
+    <div className="rounded-xl mt-10 overflow-hidden shadow-md dark:shadow-none shadow-zinc-600 bg-white dark:bg-zinc-900 flex flex-col">
       <img
         src={myProject.image}
         alt={myProject.name}
